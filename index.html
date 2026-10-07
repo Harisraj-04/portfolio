@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-<title>Janani Chase — PSNA Campus Run · Bireethive Ranjan Perumal</title>
+<title>BIREETHIVE — 3 Routes, 3 Girls · PSNA Campus Run</title>
 <style>
   :root{ --gold:#ffc83d; --pink:#ff5e9c; --glass:rgba(10,18,32,.55); }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -20,8 +20,8 @@
     border-radius:16px;padding:9px 15px;backdrop-filter:blur(8px);
     box-shadow:0 8px 26px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1)}
   .lbl{font-size:9.5px;letter-spacing:2.4px;opacity:.6;text-transform:uppercase}
-  #scoreBox{top:14px;left:14px;min-width:168px}
-  #scoreVal{font-size:29px;font-weight:900;line-height:1;
+  #scoreBox{top:14px;left:14px;min-width:178px}
+  #scoreVal{font-size:28px;font-weight:900;line-height:1;
     background:linear-gradient(180deg,#fff,#ffd98a);-webkit-background-clip:text;background-clip:text;color:transparent}
   #distVal{font-size:11px;opacity:.78;margin-top:3px}
   #coinBox{top:14px;right:14px;display:flex;align-items:center;gap:9px}
@@ -34,6 +34,9 @@
   .hrt{width:21px;height:19px;transition:.25s;filter:drop-shadow(0 0 6px rgba(255,70,120,.6))}
   .hrt svg{width:100%;height:100%;display:block}
   .hrt.off{opacity:.2;filter:grayscale(1);transform:scale(.8)}
+  #routeBox{top:110px;right:14px;text-align:right;padding:8px 14px}
+  #routeBox b{font-size:15px;font-weight:900;display:block;line-height:1.15}
+  #routeBox span{font-size:9px;letter-spacing:2px;opacity:.68}
 
   #catchBox{bottom:16px;left:50%;transform:translateX(-50%);width:min(440px,80vw);
     display:flex;flex-direction:column;gap:5px;padding:10px 16px 11px}
@@ -56,7 +59,7 @@
     backdrop-filter:blur(8px);font-family:inherit}
   .ibtn:active{transform:scale(.93)}
   #bubble{position:absolute;pointer-events:none;transform:translate(-50%,-100%) scale(.7);opacity:0;
-    transition:opacity .18s,transform .18s;max-width:280px;z-index:5}
+    transition:opacity .18s,transform .18s;max-width:300px;z-index:5}
   #bubble.on{opacity:1;transform:translate(-50%,-100%) scale(1)}
   #bubble .bb{background:linear-gradient(180deg,#fffdf7,#ffe9f1);color:#4a1026;border:2.5px solid #ff5e9c;
     border-radius:16px;padding:8px 14px 9px;text-align:center;box-shadow:0 10px 26px rgba(0,0,0,.42)}
@@ -75,7 +78,7 @@
   /* ================= DIALOGUE ================= */
   #talk{position:absolute;inset:0;display:none;z-index:15;pointer-events:none}
   #talk.on{display:block}
-  #talkBox{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:min(680px,94vw);
+  #talkBox{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:min(690px,94vw);
     pointer-events:auto;background:linear-gradient(180deg,rgba(255,252,248,.97),rgba(255,233,241,.97));
     border:3px solid #ff5e9c;border-radius:20px;padding:14px 18px 16px;color:#40101f;
     box-shadow:0 18px 50px rgba(0,0,0,.55)}
@@ -94,7 +97,7 @@
     background:linear-gradient(180deg,#ffd34d,#ff8a0d);color:#3d1c00;font-weight:900;font-size:15px;
     letter-spacing:1.6px;padding:12px;border-radius:12px;box-shadow:0 4px 0 #b85c00}
   #dlgHint{font-size:9.5px;letter-spacing:1.4px;opacity:.5;margin-top:8px;text-align:center;font-weight:800}
-  #myLine{position:absolute;left:50%;bottom:calc(18px + 190px);transform:translateX(-50%);
+  #myLine{position:absolute;left:50%;bottom:calc(18px + 195px);transform:translateX(-50%);
     width:min(640px,92vw);pointer-events:none;opacity:0;transition:.3s}
   #myLine.on{opacity:1}
   #myLine .mb{background:linear-gradient(180deg,#eaf6ff,#d3ebff);color:#10304a;border:3px solid #2f8fd0;
@@ -108,8 +111,8 @@
                radial-gradient(900px 600px at 50% 100%,rgba(255,150,40,.16),transparent 65%),
                linear-gradient(180deg,rgba(5,10,20,.93),rgba(5,10,20,.98))}
   .screen.on{display:flex}
-  .card{width:min(620px,100%);text-align:center}
-  h1{margin:0;font-size:clamp(26px,6.4vw,48px);line-height:.95;font-weight:900;letter-spacing:-1.4px;
+  .card{width:min(680px,100%);text-align:center}
+  h1{margin:0;font-size:clamp(25px,6.2vw,46px);line-height:.95;font-weight:900;letter-spacing:-1.4px;
      background:linear-gradient(180deg,#fff6d8,#ffb02e 52%,#ff5e1a);-webkit-background-clip:text;background-clip:text;
      color:transparent;filter:drop-shadow(0 5px 14px rgba(255,120,0,.4))}
   h1.pink{background:linear-gradient(180deg,#fff0f6,#ff85b4 50%,#e8206c);-webkit-background-clip:text;background-clip:text;
@@ -117,15 +120,15 @@
   .tam{font-size:clamp(15px,3.7vw,22px);font-weight:700;color:#ffd98a;margin:7px 0 2px}
   .tam.pk{color:#ffb6d2}
   .sub{font-size:11px;letter-spacing:3.2px;text-transform:uppercase;opacity:.7;margin-bottom:14px}
-  .story{font-size:12.5px;opacity:.86;line-height:1.75;max-width:480px;margin:0 auto 16px;
+  .story{font-size:12.5px;opacity:.86;line-height:1.75;max-width:520px;margin:0 auto 16px;
     border-top:1px solid rgba(255,255,255,.13);border-bottom:1px solid rgba(255,255,255,.13);padding:12px 6px}
   .story b{color:#ffd98a} .story i{color:#ffb6d2;font-style:normal;font-weight:700}
   .play{appearance:none;border:0;cursor:pointer;font-family:inherit;background:linear-gradient(180deg,#ffd34d,#ff8a0d);
-    color:#3d1c00;font-weight:900;font-size:20px;letter-spacing:1.6px;padding:15px 44px;border-radius:40px;
+    color:#3d1c00;font-weight:900;font-size:19px;letter-spacing:1.6px;padding:14px 40px;border-radius:40px;
     box-shadow:0 8px 0 #b85c00,0 15px 30px rgba(0,0,0,.45);transition:.09s}
   .play.pink{background:linear-gradient(180deg,#ff8fc0,#e8206c);color:#fff;box-shadow:0 8px 0 #9c0747,0 15px 30px rgba(255,20,100,.35)}
   .play:active{transform:translateY(5px)}
-  .keys{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin:18px auto 0;max-width:470px;font-size:11.5px}
+  .keys{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin:16px auto 0;max-width:480px;font-size:11.5px}
   .keys div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:11px;
     padding:8px 11px;display:flex;align-items:center;gap:8px;text-align:left}
   kbd{background:#1d2436;border:1px solid #3a4458;border-bottom-width:2px;border-radius:5px;padding:1px 6px;
@@ -134,35 +137,50 @@
   .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:15px;padding:11px 18px;min-width:92px}
   .stat b{display:block;font-size:24px;font-weight:900}
   .stat span{font-size:9px;letter-spacing:1.5px;opacity:.62;text-transform:uppercase}
-  .foot{margin-top:15px;font-size:10px;opacity:.42;letter-spacing:1.2px}
-  .cast{display:flex;gap:12px;justify-content:center;margin:4px 0 14px;flex-wrap:wrap}
+  .foot{margin-top:15px;font-size:10px;opacity:.45;letter-spacing:1.2px}
+  .cast{display:flex;gap:9px;justify-content:center;margin:6px 0 14px;flex-wrap:wrap}
   .who2{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;
-    padding:9px 14px;font-size:11px;line-height:1.5;max-width:240px}
-  .who2 b{display:block;font-size:13px;color:#ffd98a} .who2.g b{color:#ffb6d2}
+    padding:9px 12px;font-size:10.5px;line-height:1.5;width:186px;text-align:left}
+  .who2 b{display:block;font-size:13px;margin-bottom:2px}
+  .who2 em{font-style:normal;display:block;font-size:9px;letter-spacing:1.6px;opacity:.6;margin-bottom:4px}
+  .picklbl{font-size:9.5px;letter-spacing:2.6px;opacity:.5;margin:16px 0 7px;font-weight:800}
+  .pickrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .rpick{font-family:inherit;cursor:pointer;background:rgba(255,255,255,.07);
+    border:1.5px solid rgba(255,255,255,.18);border-radius:13px;padding:9px 14px;color:#fff;
+    display:flex;flex-direction:column;gap:2px;align-items:flex-start;min-width:150px;transition:.12s}
+  .rpick:hover{background:rgba(255,255,255,.14)}
+  .rpick:active{transform:translateY(2px)}
+  .rpick b{font-size:12px;letter-spacing:.6px}
+  .rpick span{font-size:9px;letter-spacing:1.4px;opacity:.55}
   .chapline{font-size:11px;letter-spacing:3px;opacity:.6;margin-bottom:6px;text-transform:uppercase}
+  .routebar{display:flex;gap:6px;justify-content:center;margin:0 0 12px}
+  .rdot{font-size:9.5px;letter-spacing:1.4px;font-weight:900;padding:5px 11px;border-radius:20px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);opacity:.45}
+  .rdot.done{background:linear-gradient(180deg,#58d68d,#1e8449);color:#06240f;opacity:1;border-color:#58d68d}
+  .rdot.now{background:linear-gradient(180deg,#ffd34d,#ff8a0d);color:#3d1c00;opacity:1;border-color:#ffd34d}
 
   /* ================= WEDDING CARD ================= */
   #weddingScreen{background:radial-gradient(900px 600px at 50% 20%,rgba(255,180,60,.22),transparent 60%),
      linear-gradient(180deg,#2a0d1a,#120510)}
-  .invite{width:min(560px,100%);background:linear-gradient(180deg,#fffdf4,#ffeede);color:#4a1a0a;
-    border-radius:20px;padding:26px 22px 24px;position:relative;
+  .invite{width:min(580px,100%);background:linear-gradient(180deg,#fffdf4,#ffeede);color:#4a1a0a;
+    border-radius:20px;padding:24px 20px 22px;position:relative;
     box-shadow:0 26px 70px rgba(0,0,0,.65), inset 0 0 0 3px #d4a017, inset 0 0 0 9px #fffdf4, inset 0 0 0 11px #c2452f}
-  .invite .om{font-size:22px;color:#c2452f;font-weight:900}
-  .invite .pre{font-size:10.5px;letter-spacing:3.4px;text-transform:uppercase;color:#8a5a2a;margin:8px 0 4px;font-weight:800}
-  .invite .names{font-size:clamp(26px,6.6vw,44px);font-weight:900;line-height:1.05;letter-spacing:-1px;
+  .invite .om{font-size:21px;color:#c2452f;font-weight:900}
+  .invite .pre{font-size:10.5px;letter-spacing:3.4px;text-transform:uppercase;color:#8a5a2a;margin:7px 0 4px;font-weight:800}
+  .invite .names{font-size:clamp(23px,5.6vw,38px);font-weight:900;line-height:1.08;letter-spacing:-1px;
     background:linear-gradient(180deg,#d4a017,#c2452f);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .invite .weds{font-size:13px;letter-spacing:5px;color:#c2452f;font-weight:900;margin:4px 0}
-  .invite .date{margin:14px auto 10px;display:inline-block;border:2px dashed #d4a017;border-radius:14px;padding:9px 20px}
-  .invite .date b{font-size:clamp(20px,5vw,30px);font-weight:900;color:#c2452f;letter-spacing:1px}
+  .invite .weds{font-size:12px;letter-spacing:5px;color:#c2452f;font-weight:900;margin:3px 0}
+  .invite .date{margin:12px auto 8px;display:inline-block;border:2px dashed #d4a017;border-radius:14px;padding:8px 20px}
+  .invite .date b{font-size:clamp(19px,4.6vw,28px);font-weight:900;color:#c2452f;letter-spacing:1px}
   .invite .date span{display:block;font-size:10px;letter-spacing:2.6px;color:#8a5a2a;font-weight:800;margin-top:2px}
-  .invite .venue{font-size:12.5px;line-height:1.7;color:#5a3418;margin-top:6px}
+  .invite .venue{font-size:12px;line-height:1.65;color:#5a3418;margin-top:4px}
   .invite .venue b{color:#c2452f}
-  .invite .wel{margin-top:12px;font-size:13px;font-weight:900;letter-spacing:1.4px;color:#1f6b4a}
-  .invite .tamline{font-size:16px;font-weight:700;color:#8a2b1a;margin-top:6px}
-  .invite .tiny{margin-top:12px;font-size:9.5px;letter-spacing:1.3px;color:#a07a4a}
-  .kol{position:absolute;width:52px;height:52px;opacity:.45}
-  .kol.a{top:14px;left:14px}.kol.b{top:14px;right:14px}.kol.c{bottom:14px;left:14px}.kol.d{bottom:14px;right:14px}
-  @media (max-width:540px){ .keys{grid-template-columns:1fr} #talkBox{bottom:10px} }
+  .invite .wel{margin-top:10px;font-size:13px;font-weight:900;letter-spacing:1.4px;color:#1f6b4a}
+  .invite .tamline{font-size:15px;font-weight:700;color:#8a2b1a;margin-top:5px}
+  .invite .tiny{margin-top:10px;font-size:9.5px;letter-spacing:1.2px;color:#a07a4a;line-height:1.6}
+  .kol{position:absolute;width:48px;height:48px;opacity:.45}
+  .kol.a{top:12px;left:12px}.kol.b{top:12px;right:12px}.kol.c{bottom:12px;left:12px}.kol.d{bottom:12px;right:12px}
+  @media (max-width:540px){ .keys{grid-template-columns:1fr} #talkBox{bottom:10px} .who2{width:100%} }
 </style>
 </head>
 <body>
@@ -177,10 +195,11 @@
     </div>
     <div class="panel" id="coinBox"><div class="coinIcon">₹</div><div id="coinVal">0</div></div>
     <div class="panel" id="lifeBox"></div>
+    <div class="panel" id="routeBox"><b id="routeName">HARSHINI</b><span id="routeDept">ROUTE 1 · IT</span></div>
     <div class="panel" id="catchBox">
-      <div id="catchTop"><span>CATCHING JANANI</span><b id="timeVal">30.0s</b></div>
+      <div id="catchTop"><span id="catchLabel">CATCHING HARSHINI</span><b id="timeVal">30.0s</b></div>
       <div id="catchTrack"><div id="catchFill"></div></div>
-      <div id="gapVal">JANANI IS 62 m AHEAD</div>
+      <div id="gapVal">SHE IS 62 m AHEAD</div>
     </div>
     <div id="pwrBox"></div>
     <div id="btns">
@@ -195,7 +214,7 @@
   <div id="talk">
     <div id="myLine"><div class="who">BIREETHIVE</div><div class="mb" id="myLineText"></div></div>
     <div id="talkBox">
-      <div id="talkWho">JANANI</div>
+      <div id="talkWho">HARSHINI</div>
       <div id="talkTam" class="ta"></div>
       <div id="talkEn"></div>
       <div id="talkRow">
@@ -210,32 +229,51 @@
 
   <!-- =============== START =============== -->
   <div class="screen on" id="startScreen">
-    <div class="chapline" style="position:absolute;top:16px;left:0;right:0">PSNA College of Engineering &amp; Technology · Dindigul</div>
     <div class="card">
-      <h1 class="pink">JANANI CHASE</h1>
-      <div class="tam ta">ஜானனி சேஸ் — PSNA காலேஜ்</div>
-      <div class="sub">30 seconds · 3 hearts · one proposal</div>
+      <div class="chapline">PSNA College of Engineering &amp; Technology · Dindigul</div>
+      <h1 class="pink">BIREETHIVE</h1>
+      <div class="tam ta">3 ரூட்டு · 3 பொண்ணு · 1 ரோஜா</div>
+      <div class="sub">3 routes · 3 girls · 3 hearts · 30 seconds each</div>
       <div class="cast">
-        <div class="who2"><b>BIREETHIVE RANJAN PERUMAL</b>From Manapparai. One rose, one bus pass,
-          and absolutely no plan.</div>
-        <div class="who2 g"><b>JANANI</b>Runs out of the PSNA campus towards her house in
-          Thanakkankulam. Scolds in Madurai Tamil.</div>
+        <div class="who2"><b style="color:#49e3d0">HARSHINI</b><em>ROUTE 1 · IT DEPARTMENT</em>
+          Trending Asian Paints influencer. 2 lakh followers. Shoots a reel while running.</div>
+        <div class="who2"><b style="color:#ff9ec4">JANANI</b><em>ROUTE 2 · CSBS DEPARTMENT</em>
+          Dharan's little sister. Asks one very specific question before she says anything.</div>
+        <div class="who2"><b style="color:#b89bff">AISWARYA “AI &amp; DS”</b><em>ROUTE 3 · AI &amp; DATA SCIENCE</em>
+          Already committed. Savage. Will not be impressed. At all.</div>
       </div>
       <div class="story">
-        Chase Janani across the <b>PSNA campus</b> — past the CSE block, the central library, the canteen,
-        the bus bay and <b>route 66</b> — all the way to her street in <b>Thanakkankulam</b>.<br>
-        The speed never changes: it is <b>1× from start to finish</b>. Just survive
-        <b>30 seconds</b> with at least one heart and he catches her at her door.<br>
-        Then… <i>you type the proposal yourself.</i>
+        <b>Bireethive Ranjan Perumal</b> from <b>Manapparai</b> is in love with all three of them.
+        Chase each girl down her own route of the <b>PSNA campus</b> — survive
+        <b>30 seconds</b> at a <b>constant 1× speed</b> with at least one heart left —
+        then follow her inside and <i>type the proposal yourself</i>.<br>
+        <i>Warning: she only falls for one name. Type it exactly right.</i>
       </div>
-      <button class="play pink" id="playBtn">▶ ODU, BIREETHIVE!</button>
+      <button class="play pink" id="playBtn">▶ ODU, BIREETHIVE! (ROUTE 1)</button>
+      <div class="picklbl">OR JUMP STRAIGHT TO ANY ROUTE</div>
+      <div id="routePick" class="pickrow"></div>
       <div class="keys">
         <div><kbd>◀</kbd><kbd>▶</kbd> / <kbd>A</kbd><kbd>D</kbd> &nbsp;Change lane</div>
         <div><kbd>▲</kbd> / <kbd>W</kbd> / <kbd>Space</kbd> &nbsp;Jump</div>
         <div><kbd>▼</kbd> / <kbd>S</kbd> &nbsp;Slide under banners</div>
         <div><kbd>Esc</kbd> Pause &nbsp;·&nbsp; <kbd>M</kbd> Mute</div>
       </div>
-      <div class="foot">MOBILE: SWIPE LEFT / RIGHT / UP / DOWN · TAP TO JUMP</div>
+      <div class="foot">MOBILE: SWIPE LEFT / RIGHT / UP / DOWN · TAP TO JUMP<br>
+        PRESS <b>1</b>, <b>2</b> OR <b>3</b> ANY TIME ON A MENU TO JUMP TO THAT ROUTE</div>
+    </div>
+  </div>
+
+  <!-- =============== ROUTE INTRO =============== -->
+  <div class="screen" id="routeScreen">
+    <div class="card">
+      <div class="routebar" id="routeBar"></div>
+      <div class="chapline" id="riRoute">ROUTE 1 · IT BLOCK ROAD</div>
+      <h1 id="riName">HARSHINI</h1>
+      <div class="tam ta" id="riTam">ஹர்ஷினி</div>
+      <div class="sub" id="riDept">IT DEPARTMENT · PSNA</div>
+      <div class="story" id="riDesc"></div>
+      <button class="play pink" id="riGo">▶ START THE CHASE</button>
+      <div class="foot" id="riTip"></div>
     </div>
   </div>
 
@@ -262,9 +300,36 @@
         <div class="stat"><b id="fCoins">0</b><span>Rupees</span></div>
         <div class="stat"><b id="fBest">0</b><span>Best</span></div>
       </div>
-      <button class="play pink" id="againBtn">↻ TRY AGAIN</button>
+      <button class="play pink" id="againBtn">↻ TRY THIS ROUTE AGAIN</button>
       <div style="margin-top:14px"><button class="ibtn" id="menuBtn" style="width:auto;padding:0 18px">Main menu</button></div>
       <div class="foot" id="overTip">TIP: ALL THREE HEARTS MUST NOT RUN OUT BEFORE 30 SECONDS</div>
+    </div>
+  </div>
+
+  <!-- =============== ROUTE CLEARED =============== -->
+  <div class="screen" id="clearScreen">
+    <div class="card">
+      <div class="routebar" id="clearBar"></div>
+      <h1 class="pink" id="clTitle">SHE SAID YES!</h1>
+      <div class="tam ta pk" id="clTam"></div>
+      <div class="sub" id="clSub"></div>
+      <div class="story" id="clDesc"></div>
+      <button class="play pink" id="clNext">▶ NEXT ROUTE</button>
+      <div style="margin-top:13px"><button class="ibtn" id="clMenu" style="width:auto;padding:0 18px">⌂ Route menu</button></div>
+      <div class="foot" id="clFoot"></div>
+    </div>
+  </div>
+
+  <!-- =============== FRIENDZONED =============== -->
+  <div class="screen" id="fzScreen">
+    <div class="card">
+      <h1 id="fzTitle">FRIEND ZONED 🫶</h1>
+      <div class="tam ta" id="fzTam">நீ எனக்கு pookie தான்…</div>
+      <div class="sub" id="fzSub"></div>
+      <div class="story" id="fzDesc"></div>
+      <button class="play pink" id="fzRetry">↻ RUN THIS ROUTE AGAIN</button>
+      <div style="margin-top:13px"><button class="ibtn" id="fzMenu" style="width:auto;padding:0 18px">⌂ Route menu</button></div>
+      <div class="foot" id="fzFoot">PSST… SHE ONLY LOVES ONE BOY, AND HIS NAME IS <b>BIREETHIVE</b></div>
     </div>
   </div>
 
@@ -276,21 +341,20 @@
       <svg class="kol c" viewBox="0 0 60 60"><g fill="none" stroke="#c2452f" stroke-width="2"><circle cx="30" cy="30" r="6"/><path d="M30 8c6 6 6 16 0 22-6-6-6-16 0-22ZM30 52c6-6 6-16 0-22-6 6-6 16 0 22ZM8 30c6-6 16-6 22 0-6 6-16 6-22 0ZM52 30c-6-6-16-6-22 0 6 6 16 6 22 0Z"/></g></svg>
       <svg class="kol d" viewBox="0 0 60 60"><g fill="none" stroke="#c2452f" stroke-width="2"><circle cx="30" cy="30" r="6"/><path d="M30 8c6 6 6 16 0 22-6-6-6-16 0-22ZM30 52c6-6 6-16 0-22-6 6-6 16 0 22ZM8 30c6-6 16-6 22 0-6 6-16 6-22 0ZM52 30c-6-6-16-6-22 0 6 6 16 6 22 0Z"/></g></svg>
       <div class="om">ॐ · 🌺</div>
-      <div class="pre">With the blessings of elders</div>
-      <div class="names">DHARAN</div>
+      <div class="pre">With the blessings of elders &amp; 2 lakh followers</div>
+      <div class="names">BIREETHIVE RANJAN PERUMAL</div>
       <div class="weds">W E D S</div>
-      <div class="names">JANANI</div>
+      <div class="names">HARSHINI <span style="font-size:.6em">&amp;</span> JANANI</div>
       <div class="date"><b>30 · 02 · 2027</b><span>Muhurtham 10:30 AM</span></div>
       <div class="venue">
-        <b>Thanakkankulam (TKK)</b> Thirumana Mandapam<br>
-        Madurai–Thirumangalam Road, Madurai · PIN 625006<br>
-        <span style="font-size:11px;opacity:.8">Couple met at <b>PSNA College of Engineering &amp; Technology</b>, Dindigul —
-        bus route <b>66</b></span>
+        <b>PSNA College Auditorium</b>, Kothandaraman Nagar, Muthanampatti, Dindigul 624622<br>
+        Reception at <b>Thanakkankulam (TKK)</b> Thirumana Mandapam, Madurai 625006<br>
+        <span style="font-size:11px;opacity:.85">Transport: <b>College bus route 66</b> · leaves sharp at 8 AM</span>
       </div>
-      <div class="wel">ALL ARE WELCOME 🎉</div>
-      <div class="tamline ta">அனைவரும் வருக! · தரன் – ஜானனி திருமணம்</div>
-      <div class="tiny" id="inviteTiny">Chief guest: Bireethive Ranjan Perumal, Manapparai (pookie)</div>
-      <button class="play pink" id="weddingAgain" style="margin-top:16px;font-size:16px;padding:12px 30px">↻ PLAY AGAIN</button>
+      <div class="wel">ALL ARE WELCOME TO THE MARRIAGE 🎉</div>
+      <div class="tamline ta">அனைவரும் வருக! · பீரித்திவ் – ஹர்ஷினி – ஜானனி திருமணம்</div>
+      <div class="tiny" id="inviteTiny"></div>
+      <button class="play pink" id="weddingAgain" style="margin-top:14px;font-size:16px;padding:12px 28px">↻ PLAY AGAIN</button>
     </div>
   </div>
 </div>
@@ -298,11 +362,11 @@
 <script>
 "use strict";
 /* ============================================================================
-   JANANI CHASE — PSNA CAMPUS RUN
-   Bireethive Ranjan Perumal (Manapparai) chases Janani across the
-   PSNA College of Engineering & Technology campus (Dindigul) and down to her
-   street in Thanakkankulam (TKK), Madurai.
-   Constant 1x speed · 30 second chase · 3 hearts · typed proposal ending.
+   BIREETHIVE — 3 ROUTES, 3 GIRLS  ·  PSNA Campus Run
+   Route 1 : HARSHINI   (IT)      — Asian Paints influencer
+   Route 2 : JANANI     (CSBS)    — Dharan's sister
+   Route 3 : AISWARYA   (AI & DS) — already committed, zero mercy
+   Constant 1x speed · 30 second chase · 3 hearts · typed proposal.
 ============================================================================ */
 
 const cv  = document.getElementById('cv');
@@ -334,22 +398,29 @@ const mixa=(c1,c2,t)=>[lerp(c1[0],c2[0],t),lerp(c1[1],c2[1],t),lerp(c1[2],c2[2],
 const RGB=c=>'rgb('+(c[0]|0)+','+(c[1]|0)+','+(c[2]|0)+')';
 const RGBA=(c,a)=>'rgba('+(c[0]|0)+','+(c[1]|0)+','+(c[2]|0)+','+a+')';
 
-/* --------------------------- light: morning -> golden over the 30 seconds */
-const T_A={ sky:[[36,78,150],[104,150,206],[196,206,228],[246,230,204]],
+/* ---------------------------------------------------- light presets */
+const T_MORN={ sky:[[36,78,150],[104,150,206],[196,206,228],[246,230,204]],
   grass:[[132,164,84],[120,152,76]], tar:[[78,79,86],[71,72,79]],
   hill:[[112,134,164],[88,110,142]], haze:[226,232,240], sunC:[255,250,225], sunY:-.06 };
-const T_B={ sky:[[62,70,132],[172,116,152],[255,158,92],[255,212,132]],
+const T_NOON={ sky:[[26,96,186],[88,166,226],[178,214,238],[232,242,246]],
+  grass:[[142,178,92],[128,162,82]], tar:[[88,89,96],[80,81,88]],
+  hill:[[122,148,172],[96,124,152]], haze:[236,244,250], sunC:[255,255,245], sunY:-.14 };
+const T_GOLD={ sky:[[62,70,132],[172,116,152],[255,158,92],[255,212,132]],
   grass:[[140,134,70],[126,120,62]], tar:[[74,66,64],[66,60,58]],
   hill:[[114,90,116],[86,66,96]], haze:[255,172,104], sunC:[255,206,130], sunY:.08 };
+const T_DUSK={ sky:[[14,16,52],[52,38,96],[132,62,110],[224,118,88]],
+  grass:[[70,72,58],[58,60,48]], tar:[[46,44,52],[40,38,46]],
+  hill:[[62,52,86],[42,34,64]], haze:[180,110,120], sunC:[255,150,96], sunY:.14 };
 let theme=null;
 function computeTheme(){
-  const t=clamp(game.runTime/CATCH_TIME,0,1);
-  theme={ sky:T_A.sky.map((c,i)=>mixa(c,T_B.sky[i],t)),
-    grass:T_A.grass.map((c,i)=>mixa(c,T_B.grass[i],t)),
-    tar:T_A.tar.map((c,i)=>mixa(c,T_B.tar[i],t)),
-    hill:T_A.hill.map((c,i)=>mixa(c,T_B.hill[i],t)),
-    haze:mixa(T_A.haze,T_B.haze,t), sunC:mixa(T_A.sunC,T_B.sunC,t),
-    sunY:lerp(T_A.sunY,T_B.sunY,t) };
+  const g=girl(), t=clamp(game.runTime/CATCH_TIME,0,1);
+  const A=g.tA, B=g.tB;
+  theme={ sky:A.sky.map((c,i)=>mixa(c,B.sky[i],t)),
+    grass:A.grass.map((c,i)=>mixa(c,B.grass[i],t)),
+    tar:A.tar.map((c,i)=>mixa(c,B.tar[i],t)),
+    hill:A.hill.map((c,i)=>mixa(c,B.hill[i],t)),
+    haze:mixa(A.haze,B.haze,t), sunC:mixa(A.sunC,B.sunC,t),
+    sunY:lerp(A.sunY,B.sunY,t) };
 }
 
 /* ----------------------------------------------------------------- audio */
@@ -388,8 +459,10 @@ const Sound=(()=>{
     door(){ noise(.3,.18,180); setTimeout(()=>tone(120,.25,'sine',.14,70),120); },
     type(){ tone(1200+Math.random()*300,.03,'square',.05); },
     sad(){ [392,349,330,294].forEach((f,i)=>setTimeout(()=>tone(f,.4,'sine',.14),i*220)); },
+    slap(){ noise(.12,.3,900); setTimeout(()=>tone(90,.3,'sawtooth',.2,40),40); },
     yes(){ [523,659,784,1046,1319,1568].forEach((f,i)=>setTimeout(()=>{tone(f,.42,'triangle',.16);tone(f/2,.42,'sine',.1);},i*150)); },
     milestone(){ [784,988,1175].forEach((f,i)=>setTimeout(()=>tone(f,.18,'square',.11),i*90)); },
+    camera(){ noise(.05,.18,2600); setTimeout(()=>tone(2200,.06,'square',.08),60); },
     beat(dt){ if(!AC||muted) return;
       const bpm=112; beatT+=dt; if(beatT<60/bpm/2) return; beatT=0; beatStep=(beatStep+1)%8;
       if(beatStep%4===0) tone(92,.17,'sine',.15,58);
@@ -399,80 +472,135 @@ const Sound=(()=>{
 })();
 
 /* ----------------------------------------------------------------- state */
-const S={ MENU:0, PLAY:1, PAUSE:2, OVER:3, CATCH:4, TALK:5, END:6 };
+const S={ MENU:0, PLAY:1, PAUSE:2, OVER:3, CATCH:4, TALK:5, END:6, ROUTE:7 };
 let state=S.MENU;
 
 const SPEED      = 640;    // CONSTANT 1x — never changes
-const CATCH_TIME = 30;     // seconds to survive
+const CATCH_TIME = 30;     // seconds to survive per route
 const GRAV=1000, JUMP_V=322;
 const PLAYER_H=72, ROLL_H=34;
 const LEAD_START=620, LEAD_END=185;
 
+/* ======================================================================
+   THE THREE GIRLS
+====================================================================== */
+const GIRLS=[
+{ id:'harshini', name:'HARSHINI', tam:'ஹர்ஷினி', dept:'IT · INFORMATION TECHNOLOGY',
+  route:'ROUTE 1 · IT BLOCK ROAD', accent:'#2ad1be',
+  kurta:['#17a398','#0d7b74'], dupatta:'rgba(255,122,47,.85)', hair:'wavy', prop:'phone',
+  tA:T_MORN, tB:T_NOON,
+  desc:'<b>Harshini</b> runs the campus Instagram. Two lakh followers, a tripod in her bag and a '+
+       '<b>trending Asian Paints</b> brand deal. She is shooting a reel <i>while</i> running away from you.',
+  tip:'HER ROUTE IS FULL OF PAINT DRUMS AND HOARDINGS — JUMP THE BUCKETS, SLIDE THE BANNERS',
+  blocks:['IT BLOCK','INFORMATION TECH','IT NETWORK LAB','WEB TECH LAB','IT SEMINAR HALL','IT PROJECT LAB'],
+  scenes:['block','block','painthoard','tree','tree','lamp','canteen','court','hedge','psnasign','bikepark','notice','gate2'],
+  obs:['paintbucket','paintdrum','hoarding'],
+  landmarks:[['PSNA MAIN GATE','Kothandaraman Nagar, Dindigul'],['IT BLOCK','Information Technology'],
+    ['PAINT HOARDING','“Har Ghar Kuchh Kehta Hai”'],['IT NETWORK LAB','cat-6 cables everywhere'],
+    ['COLLEGE CANTEEN','tea, bun-butter, parotta'],['REEL SHOOTING SPOT','do not walk into frame'],
+    ['PLAYGROUND','volleyball & cricket nets'],['PSNA LAWN','the PSNA letters in the grass'],
+    ["HARSHINI'S STREET",'Dindigul town']],
+  lines:[['டேய்! என் reel-ஐ கெடுக்காத!','DEI! DO NOT SPOIL MY REEL!'],
+    ['பின்னாடி வராத, frame-ல வந்துடுவ!','STOP FOLLOWING — YOU WILL COME IN FRAME!'],
+    ['போடா பொறுக்கி!','PODA PORIKKI!'],
+    ['எனக்கு 2 லட்சம் followers டா!','I HAVE 2 LAKH FOLLOWERS, DA!'],
+    ['அய்யோ, லைட்டிங் கெட்டுப்போச்சு!','AIYO, YOU RUINED MY LIGHTING!'],
+    ['இது sponsored shoot, போ!','THIS IS A SPONSORED SHOOT, GO!'],
+    ['லூசு பயலே!','LOOSU PAYALE!'],
+    ['ப்ரோ, unfollow பண்ணிடுவேன்!','BRO, I WILL UNFOLLOW YOU!']],
+  hit:[['ஹா ஹா! அது content ஆகிடுச்சு!','HA HA! THAT IS CONTENT NOW!'],
+    ['அய்யய்யோ! விழுந்துட்டானே!','AIYAIYO! HE FELL!'],
+    ['story-ல போடப்போறேன்!','I AM PUTTING THIS ON MY STORY!']],
+  near:[['அய்யோ! கிட்ட வந்துட்டானே!','AIYO! HE IS CATCHING UP!'],
+    ['வீடு வந்துடுச்சு… ஓடு ஹர்ஷினி!','ALMOST HOME… RUN HARSHINI!']],
+  wall:['#ffe6cf','#ffc9a0'], floor:['#c98a4a','#9a6334'] },
+
+{ id:'janani', name:'JANANI', tam:'ஜானனி', dept:'CSBS · CS & BUSINESS SYSTEMS',
+  route:'ROUTE 2 · CSBS BLOCK ROAD', accent:'#ff5e9c',
+  kurta:['#e8206c','#b9104f'], dupatta:'rgba(255,190,70,.85)', hair:'braid', prop:'none',
+  tA:T_NOON, tB:T_GOLD,
+  desc:'<b>Janani</b> from CSBS. Her big brother <b>Dharan</b> is a Cyber Security 3rd year senior — '+
+       'and he is <i>very</i> protective. She will ask you exactly one question before anything else.',
+  tip:'ROUTE 66 COLLEGE BUSES, AUTOS AND CAMPUS COWS — DO NOT ARGUE WITH ANY OF THEM',
+  blocks:['CSBS BLOCK','CS & BUSINESS SYS','CSE BLOCK','CYBER SECURITY','FINTECH LAB','CSBS SEMINAR'],
+  scenes:['block','block','library','canteen','hostel','busbay','tree','tree','lamp','notice','flag','watertank','hedge','gate2'],
+  obs:['bus','van','teacart'],
+  landmarks:[['CSBS BLOCK','CS & Business Systems'],['CENTRAL LIBRARY','PSNACET · Autonomous'],
+    ['CYBER SECURITY BLOCK','Dharan annan studies here'],['BUS BAY — ROUTE 66','Dindigul · Madurai route'],
+    ['COLLEGE CANTEEN','tea, bun-butter, parotta'],['LADIES HOSTEL ROAD','walk fast, do not stare'],
+    ['PLACEMENT CELL','T&P · drive in progress'],['PALANI–SIRUMALAI VIEW','the hills behind the campus'],
+    ["JANANI'S STREET",'Thanakkankulam, Madurai 625006']],
+  lines:[['போடா பொறுக்கி!','PODA PORIKKI!'],
+    ['ஏய் பீரித்திவ், பின்னாடி வராதே!','EY BIREETHIVE, STOP FOLLOWING!'],
+    ['அண்ணன்கிட்ட சொல்லிடுவேன்!','I WILL TELL MY BROTHER!'],
+    ['லூசு பயலே!','LOOSU PAYALE!'],
+    ['டேய் வாலு, போ!','DEI VAALU, GO AWAY!'],
+    ['மணப்பாறைக்கே திரும்பி போ!','GO BACK TO MANAPPARAI!'],
+    ['பஸ் 66 மிஸ் ஆகப்போகுது!','YOU WILL MISS BUS 66!'],
+    ['லைப்ரரி பக்கம் சத்தம் போடாத!','DO NOT SHOUT NEAR THE LIBRARY!']],
+  hit:[['அய்யய்யோ! விழுந்துட்டானே!','AIYAIYO! HE FELL!'],
+    ['கவனம் இல்லாத பய!','CARELESS FELLOW!'],
+    ['ஹா ஹா! சரியா போச்சு!','HA HA! SERVES YOU RIGHT!']],
+  near:[['ஐயோ! கிட்ட வந்துட்டானே!','AIYO! HE IS CATCHING UP!'],
+    ['வீடு வந்துடுச்சு… ஓடு ஜானனி!','ALMOST HOME… RUN JANANI!']],
+  wall:['#cfe6d6','#a8cdb4'], floor:['#a8503a','#7e3625'] },
+
+{ id:'aiswarya', name:'AISWARYA', tam:'ஐஸ்வர்யா', dept:'AI & DS · AI AND DATA SCIENCE',
+  route:'ROUTE 3 · AI & DS BLOCK ROAD', accent:'#a98bff',
+  kurta:['#7a4fd6','#5631a8'], dupatta:'rgba(120,230,255,.75)', hair:'pony', prop:'headset',
+  tA:T_GOLD, tB:T_DUSK,
+  desc:'<b>Aiswarya</b> — everybody calls her <b>“AI &amp; DS”</b>. Trains models by day, blocks boys by night. '+
+       'She is <i>already committed</i>. Chase her anyway, hero. What could possibly go wrong?',
+  tip:'LAB ROBOTS, SERVER TROLLEYS AND LOW-FLYING DRONES. GOOD LUCK.',
+  blocks:['AI & DS BLOCK','DATA SCIENCE LAB','GPU LAB','ML RESEARCH','DEEP LEARNING LAB','AI SEMINAR HALL'],
+  scenes:['block','block','serverhall','auditorium','tree','lamp','lamp','notice','bikepark','psnasign','hedge','watertank','gate2'],
+  obs:['robot','servercart','drone'],
+  landmarks:[['AI & DS BLOCK','Artificial Intelligence & Data Science'],['GPU LAB','fans screaming at 90°C'],
+    ['SERVER HALL','do not trip on the cables'],['AUDITORIUM','PSNA culturals stage'],
+    ['DRONE TEST ZONE','duck!'],['ML RESEARCH CENTRE','99.2% accuracy, 0% chance'],
+    ['PLACEMENT CELL','T&P · drive in progress'],['CAMPUS SUNSET POINT','Palani & Sirumalai hills'],
+    ["AISWARYA'S STREET",'Dindigul town']],
+  lines:[['போடா பொறுக்கி!','PODA PORIKKI!'],
+    ['என் boyfriend-கிட்ட சொல்லிடுவேன்!','I WILL TELL MY BOYFRIEND!'],
+    ['உன்ன நான் block பண்ணிட்டேன்!','I HAVE ALREADY BLOCKED YOU!'],
+    ['டேய், எனக்கு lab இருக்கு!','DEI, I HAVE A LAB SESSION!'],
+    ['லூசு பயலே, போ!','LOOSU PAYALE, GO!'],
+    ['என் model-ஐ விட நீ worst!','YOU ARE WORSE THAN MY MODEL!'],
+    ['இது stalking டா, தெரியுமா?','THIS IS STALKING, YOU KNOW?'],
+    ['சீ! போடா!','CHEE! GET LOST!']],
+  hit:[['நல்லா வேணும்!','SERVES YOU RIGHT!'],
+    ['ஹா! data point ஒண்ணு குறைஞ்சது!','HA! ONE DATA POINT LESS!'],
+    ['அய்யய்யோ! விழுந்துட்டானே!','AIYAIYO! HE FELL!']],
+  near:[['சீ! கிட்ட வராத!','CHEE! DO NOT COME NEAR!'],
+    ['வீடு வந்துடுச்சு… ஓடு!','ALMOST HOME… RUN!']],
+  wall:['#d6d2ef','#b3aedb'], floor:['#5c5470','#423c55'] }
+];
+function girl(){ return GIRLS[clamp(game.chapter,0,2)]; }
+
 const game={
-  dist:0, score:0, coins:0, t:0, runTime:0,
+  dist:0, score:0, coins:0, t:0, runTime:0, chapter:0, cleared:[false,false,false],
   lane:1, px:0, py:0, vy:0, roll:0, runT:0, grounded:true, jbuf:0,
   lives:3, inv:0, hitFlash:0, shakeT:0, shake:0, chase:0,
   magnet:0, shield:0, dbl:0, leadPen:0,
   nextSpawn:0, nextScene:0, nextCoins:0, nextGift:0,
   landmarkIdx:0, nextLandmark:400,
   objs:[], pickups:[], scenery:[], fx:[], petals:[],
-  best:0, catchT:0, talkT:0,
+  best:0, totalScore:0, catchT:0, talkT:0,
   jan:{ lead:LEAD_START, lane:1, x:0, py:0, vy:0, grounded:true, runT:0, glance:0, talk:0, hop:0 },
-  // story
-  playerName:'', wantLine:'', clearLine:'', proposalLine:'', isDharan:false
+  playerName:'', answers:[], isHero:false, saidYes:false, accepted:false
 };
 
-/* ------------------------------------------------ Janani's Tamil scolding */
-const LINES=[
-  ['போடா பொறுக்கி!','PODA PORIKKI!'],
-  ['ஏய் பீரித்திவ், பின்னாடி வராதே!','EY BIREETHIVE, STOP FOLLOWING!'],
-  ['லூசு பயலே!','LOOSU PAYALE!'],
-  ['டேய் வாலு, போ!','DEI VAALU, GO AWAY!'],
-  ['அப்பாகிட்ட சொல்லிடுவேன்!',"I'LL TELL MY APPA!"],
-  ['காலேஜ் முழுக்க ஓடி வர்றியே!','YOU CHASED ME ACROSS THE COLLEGE!'],
-  ['மணப்பாறைக்கே திரும்பி போ!','GO BACK TO MANAPPARAI!'],
-  ['பஸ் மிஸ் ஆகப்போகுது, போ!','YOU WILL MISS YOUR BUS!'],
-  ['அய்யோ, இவன் ஒரு தலைவலி!','AIYO, THIS ONE IS A HEADACHE!'],
-  ['சீனியர்கிட்ட சொல்லிடுவேன்!','I WILL TELL MY SENIOR!'],
-  ['லைப்ரரி பக்கம் சத்தம் போடாத!','DO NOT SHOUT NEAR THE LIBRARY!'],
-  ['ஒழுங்கா வீட்டுக்கு போடா!','JUST GO HOME PROPERLY!']
-];
-const LINES_HIT=[
-  ['அய்யய்யோ! விழுந்துட்டானே!','AIYAIYO! HE FELL!'],
-  ['கவனம் இல்லாத பய!','CARELESS FELLOW!'],
-  ['ஹா ஹா! சரியா போச்சு!','HA HA! SERVES YOU RIGHT!'],
-  ['பாத்து ஓடு, மக்கு!','RUN CAREFULLY, DUMBO!']
-];
-const LINES_NEAR=[
-  ['ஐயோ! கிட்ட வந்துட்டானே!','AIYO! HE IS CATCHING UP!'],
-  ['வீடு வந்துடுச்சு… ஓடு ஜானனி!','ALMOST HOME… RUN JANANI!']
-];
-
-/* ------------------------------------------- PSNA campus → TKK landmarks */
-const LANDMARKS=[
-  ['PSNA MAIN GATE','Kothandaraman Nagar, Dindigul'],
-  ['CSE BLOCK','Computer Science & Engineering'],
-  ['CYBER SECURITY BLOCK','B.E. CSE (Cyber Security)'],
-  ['CENTRAL LIBRARY','PSNACET · Autonomous'],
-  ['COLLEGE CANTEEN','tea, bun-butter, parotta'],
-  ['BUS BAY — ROUTE 66','Dindigul · Madurai route'],
-  ['AUDITORIUM','PSNA culturals stage'],
-  ['PLAYGROUND','volleyball & cricket nets'],
-  ['LADIES HOSTEL ROAD','walk fast, do not stare'],
-  ['PLACEMENT CELL','T&P · drive in progress'],
-  ['PALANI–SIRUMALAI VIEW','the hills behind the campus'],
-  ["JANANI'S STREET","Thanakkankulam, Madurai 625006"]
-];
 const TIPS=[
   'TIP: THE SPEED NEVER CHANGES — ONLY YOUR TIMING MATTERS',
   'TIP: A COW CAN BE JUMPED, A COLLEGE BUS CANNOT',
-  'TIP: SLIDE UNDER THE CULTURALS BANNERS',
+  'TIP: SLIDE UNDER EVERY BANNER AND DRONE',
   'TIP: THE VEL SHIELD SAVES ONE HEART',
-  'TIP: YOU ONLY NEED ONE HEART ALIVE AT 30 SECONDS'
+  'TIP: YOU ONLY NEED ONE HEART ALIVE AT 30 SECONDS',
+  'TIP: GIFTS MAKE HER SLOW DOWN A LITTLE'
 ];
 
 /* ======================================================================
-   OBSTACLES (campus flavoured)
+   OBSTACLES
 ====================================================================== */
 const OB={
   cow:{kind:'j',h:42,len:78,w:86},    cone:{kind:'j',h:36,len:26,w:92},
@@ -481,22 +609,41 @@ const OB={
   banner:{kind:'s',clear:58,len:18,w:104}, barpole:{kind:'s',clear:55,len:16,w:100},
   auto:{kind:'b',h:96,len:96,w:86},   bikes:{kind:'b',h:78,len:120,w:94},
   bus:{kind:'b',h:162,len:300,w:96},  van:{kind:'b',h:130,len:200,w:92},
-  students:{kind:'b',h:104,len:90,w:90}, teacart:{kind:'b',h:112,len:100,w:88}
+  students:{kind:'b',h:104,len:90,w:90}, teacart:{kind:'b',h:112,len:100,w:88},
+  /* route 1 */ paintbucket:{kind:'j',h:38,len:44,w:76}, paintdrum:{kind:'b',h:104,len:74,w:84},
+  hoarding:{kind:'s',clear:58,len:18,w:104},
+  /* route 3 */ robot:{kind:'b',h:112,len:78,w:86}, servercart:{kind:'b',h:124,len:92,w:88},
+  drone:{kind:'s',clear:54,len:34,w:92}
 };
-const TEMPLATES=[
+const BASE_TEMPLATES=[
   {d:0,rows:[['auto','','']]},            {d:0,rows:[['','cow','']]},
   {d:0,rows:[['','','dustbin']]},         {d:0,rows:[['cone','cone','cone']]},
   {d:0,rows:[['bump','','']]},            {d:1,rows:[['bikes','','auto']]},
-  {d:1,rows:[['banner','banner','banner']]},{d:1,rows:[['bus','','']]},
+  {d:1,rows:[['banner','banner','banner']]},
   {d:1,rows:[['bench','','bench']]},      {d:1,rows:[['cow','cow','']]},
-  {d:1,rows:[['','students','cow']]},     {d:2,rows:[['bus','bus','']]},
-  {d:2,rows:[['van','','teacart']]},      {d:2,rows:[['','banner','bikes']]},
-  {d:2,rows:[['auto','cone','auto']]},    {d:2,rows:[['teacart','cow','auto']]},
-  {d:3,rows:[['bus','','auto'],['','banner','banner']]},
-  {d:3,rows:[['bikes','auto',''],['','','cow']]},
-  {d:3,rows:[['barpole','barpole','barpole'],['auto','','van']]},
-  {d:3,rows:[['bus','bus',''],['','bench','bench']]}
+  {d:1,rows:[['','students','cow']]},
+  {d:2,rows:[['auto','cone','auto']]},    {d:2,rows:[['','banner','bikes']]},
+  {d:3,rows:[['barpole','barpole','barpole'],['auto','','']]},
+  {d:3,rows:[['bikes','auto',''],['','','cow']]}
 ];
+/* per-route extras, built once */
+function routeTemplates(g){
+  const t=BASE_TEMPLATES.slice();
+  const [a,b,c]=g.obs;        // a = jumpable/first, b = blocker, c = slide
+  t.push({d:0,rows:[['',a,'']]});
+  t.push({d:1,rows:[[a,'',a]]});
+  t.push({d:1,rows:[[b,'','']]});
+  t.push({d:1,rows:[[c,c,c]]});
+  t.push({d:2,rows:[[b,'',b]]});
+  t.push({d:2,rows:[['',b,a]]});
+  t.push({d:2,rows:[[b,b,'']]});
+  t.push({d:3,rows:[[b,'',b],['',c,c]]});
+  t.push({d:3,rows:[[c,c,c],[b,'','']]});
+  t.push({d:3,rows:[[b,b,''],['',a,a]]});
+  return t;
+}
+let TEMPLATES=routeTemplates(GIRLS[0]);
+
 function spawnRow(zAbs,diff){
   const tpl=pick(TEMPLATES.filter(t=>t.d<=diff));
   const flip=Math.random()<.5;
@@ -526,18 +673,13 @@ const GIFT_PTS={rose:260,malli:220,choco:240,murukku:320,teddy:400};
 function spawnGift(z){ game.pickups.push({kind:pick(GIFTS),lane:ri(0,2),z,y:46,sp:Math.random()*6.28,ox:0,oy:0}); }
 function spawnPower(z){ game.pickups.push({kind:pick(['magnet','shield','dbl']),lane:ri(0,2),z,y:44,sp:Math.random()*6.28,ox:0,oy:0}); }
 
-/* ------------------------------------------------- PSNA campus scenery */
-const BLOCK_NAMES=['CSE BLOCK','IT BLOCK','ECE BLOCK','EEE BLOCK','MECH BLOCK','CIVIL BLOCK',
-  'CYBER SECURITY','AI & DATA SCIENCE','BIOMEDICAL','MCA / MBA','VLSI BLOCK','CSBS BLOCK'];
-const SCENE_TYPES=['block','block','tree','tree','lamp','library','canteen','hostel','auditorium',
-  'court','busbay','bikepark','flag','notice','hedge','psnasign','watertank','students2','gate2'];
 function spawnScene(zAbs){
-  const side=Math.random()<.5?-1:1;
-  game.scenery.push({type:pick(SCENE_TYPES),z:zAbs,x:side*(ROAD_HALF+rnd(60,250)),
-    sway:Math.random()*6.28,sc:rnd(.85,1.2),label:pick(BLOCK_NAMES)});
+  const g=girl(), side=Math.random()<.5?-1:1;
+  game.scenery.push({type:pick(g.scenes),z:zAbs,x:side*(ROAD_HALF+rnd(60,250)),
+    sway:Math.random()*6.28,sc:rnd(.85,1.2),label:pick(g.blocks)});
   if(Math.random()<.55)
-    game.scenery.push({type:pick(SCENE_TYPES),z:zAbs+rnd(20,90),x:-side*(ROAD_HALF+rnd(60,260)),
-      sway:Math.random()*6.28,sc:rnd(.85,1.2),label:pick(BLOCK_NAMES)});
+    game.scenery.push({type:pick(g.scenes),z:zAbs+rnd(20,90),x:-side*(ROAD_HALF+rnd(60,260)),
+      sway:Math.random()*6.28,sc:rnd(.85,1.2),label:pick(g.blocks)});
 }
 
 /* ======================================================================
@@ -551,22 +693,72 @@ function resetGame(){
   game.objs.length=0; game.pickups.length=0; game.scenery.length=0; game.fx.length=0; game.petals.length=0;
   game.nextSpawn=1050; game.nextScene=0; game.nextCoins=640; game.nextGift=1700;
   game.landmarkIdx=0; game.nextLandmark=400; game.catchT=0; game.talkT=0;
-  game.playerName=''; game.wantLine=''; game.clearLine=''; game.proposalLine=''; game.isDharan=false;
+  game.playerName=''; game.answers=[]; game.isHero=false; game.saidYes=false; game.accepted=false;
   camX=0; camLift=0;
+  TEMPLATES=routeTemplates(girl());
   const j=game.jan;
   j.lead=LEAD_START; j.lane=1; j.x=0; j.py=0; j.vy=0; j.grounded=true; j.runT=0; j.glance=0; j.talk=0; j.hop=0;
   while(game.nextScene<FAR_Z){ spawnScene(game.nextScene); game.nextScene+=rnd(85,200); }
   buildHearts();
 }
+function allScreensOff(){
+  ['startScreen','overScreen','pauseScreen','weddingScreen','routeScreen','clearScreen','fzScreen']
+    .forEach(s=>show(s,false));
+  document.getElementById('talk').classList.remove('on');
+  document.getElementById('myLine').classList.remove('on');
+}
+function routeBarHTML(cur){
+  return GIRLS.map((g,i)=>'<span class="rdot'+(game.cleared[i]?' done':(i===cur?' now':''))+'">'+
+    (game.cleared[i]?'✔ ':'')+(i+1)+' · '+g.name+'</span>').join('');
+}
+function showRouteIntro(ch){
+  game.chapter=clamp(ch,0,2); const g=girl();
+  state=S.ROUTE; allScreensOff();
+  document.getElementById('hud').classList.remove('on');
+  document.getElementById('routeBar').innerHTML=routeBarHTML(game.chapter);
+  document.getElementById('riRoute').textContent=g.route;
+  document.getElementById('riName').textContent=g.name;
+  document.getElementById('riName').style.filter='drop-shadow(0 5px 14px '+g.accent+'66)';
+  document.getElementById('riTam').textContent=g.tam;
+  document.getElementById('riDept').textContent=g.dept;
+  document.getElementById('riDesc').innerHTML=g.desc;
+  document.getElementById('riTip').textContent=g.tip;
+  show('routeScreen',true);
+  primaryAction=startGame;
+  resetGame(); computeTheme();
+}
 function startGame(){
   Sound.init(); resetGame(); state=S.PLAY;
-  ['startScreen','overScreen','pauseScreen','weddingScreen'].forEach(s=>show(s,false));
-  document.getElementById('talk').classList.remove('on');
+  allScreensOff();
   document.getElementById('hud').classList.add('on');
-  toast('PSNA COLLEGE · DINDIGUL','CATCH HER IN 30 SECONDS');
-  say(pick(LINES),2600);
+  const g=girl();
+  document.getElementById('routeName').textContent=g.name;
+  document.getElementById('routeName').style.color=g.accent;
+  document.getElementById('routeDept').textContent='ROUTE '+(game.chapter+1)+'/3 · '+g.dept.split(' · ')[0];
+  document.getElementById('catchLabel').textContent='CATCHING '+g.name;
+  toast(g.route,'CATCH HER IN 30 SECONDS');
+  say(pick(g.lines),2600);
 }
 function show(id,on){ document.getElementById(id).classList.toggle('on',!!on); }
+/* whatever the big button on the visible screen does — SPACE / ENTER does the same */
+let primaryAction=()=>showRouteIntro(0);
+function saveProgress(){
+  try{ localStorage.setItem('bireethive_cleared',JSON.stringify(game.cleared)); }catch(e){}
+}
+function loadProgress(){
+  try{ const v=JSON.parse(localStorage.getItem('bireethive_cleared')||'null');
+    if(Array.isArray(v)&&v.length===3) game.cleared=v.map(Boolean); }catch(e){}
+}
+function buildRoutePicker(){
+  const box=document.getElementById('routePick'); if(!box) return;
+  box.innerHTML=GIRLS.map((g,i)=>
+    '<button class="rpick" data-i="'+i+'" style="border-color:'+g.accent+'66">'+
+      '<b style="color:'+g.accent+'">'+(game.cleared[i]?'✔ ':'')+'ROUTE '+(i+1)+' · '+g.name+'</b>'+
+      '<span>'+g.dept.split(' · ')[0]+' — press '+(i+1)+'</span></button>').join('');
+  Array.prototype.forEach.call(box.querySelectorAll('.rpick'),b=>{
+    b.onclick=()=>showRouteIntro(parseInt(b.dataset.i,10));
+  });
+}
 let toastTimer=null;
 function toast(main,sub){
   const el=document.getElementById('toast');
@@ -595,18 +787,19 @@ function buildHearts(){
 }
 function gameOver(){
   state=S.OVER; Sound.over();
-  document.getElementById('overTitle').textContent='SHE GOT AWAY';
+  const g=girl();
+  document.getElementById('overTitle').textContent=g.name+' GOT AWAY';
   document.getElementById('overTam').textContent='அவ போயிட்டா…';
-  document.getElementById('overSub').textContent=
-    LANDMARKS[clamp(game.landmarkIdx-1,0,LANDMARKS.length-1)][0];
+  document.getElementById('overSub').textContent=g.route;
   const sc=Math.floor(game.score);
-  if(sc>game.best){ game.best=sc; try{localStorage.setItem('janani_best',String(sc));}catch(e){} }
+  if(sc>game.best){ game.best=sc; try{localStorage.setItem('bireethive_best',String(sc));}catch(e){} }
   document.getElementById('fTime').textContent=game.runTime.toFixed(1)+'s';
   document.getElementById('fScore').textContent=sc.toLocaleString('en-IN');
   document.getElementById('fCoins').textContent=game.coins;
   document.getElementById('fBest').textContent=game.best.toLocaleString('en-IN');
   document.getElementById('overTip').textContent=pick(TIPS);
   show('overScreen',true);
+  primaryAction=startGame;
   document.getElementById('hud').classList.remove('on');
   document.getElementById('bubble').classList.remove('on');
 }
@@ -628,7 +821,11 @@ window.addEventListener('keydown',e=>{
   if(tag==='INPUT'||tag==='TEXTAREA') return;          // never steal typing
   const k=e.key;
   if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(k)) e.preventDefault();
-  if(state===S.MENU||state===S.OVER){ if(k===' '||k==='Enter') startGame(); return; }
+  if(state===S.MENU||state===S.ROUTE||state===S.OVER){
+    if(k===' '||k==='Enter'){ if(primaryAction) primaryAction(); }
+    if(k>='1'&&k<='3'&&state!==S.PLAY){ showRouteIntro(parseInt(k,10)-1); }
+    return;
+  }
   if(state===S.TALK||state===S.CATCH||state===S.END) return;
   if(k==='Escape'){ togglePause(); return; }
   if(k==='m'||k==='M'){ document.getElementById('muteBtn').click(); return; }
@@ -652,14 +849,23 @@ function togglePause(){
   if(state===S.PLAY){state=S.PAUSE; show('pauseScreen',true);}
   else if(state===S.PAUSE){state=S.PLAY; show('pauseScreen',false);}
 }
-document.getElementById('playBtn').onclick=startGame;
+function goMenu(){ state=S.MENU; allScreensOff(); buildRoutePicker();
+  show('startScreen',true); document.getElementById('hud').classList.remove('on');
+  primaryAction=()=>showRouteIntro(0); }
+function goNextRoute(){
+  if(game.chapter<2) showRouteIntro(game.chapter+1); else showWedding(); }
+document.getElementById('playBtn').onclick=()=>{ game.totalScore=0; showRouteIntro(0); };
+document.getElementById('riGo').onclick=startGame;
 document.getElementById('againBtn').onclick=startGame;
-document.getElementById('weddingAgain').onclick=()=>{ show('weddingScreen',false); startGame(); };
+document.getElementById('fzRetry').onclick=startGame;
+document.getElementById('clNext').onclick=goNextRoute;
+document.getElementById('clMenu').onclick=goMenu;
+document.getElementById('fzMenu').onclick=goMenu;
+document.getElementById('weddingAgain').onclick=()=>{ game.totalScore=0; showRouteIntro(0); };
 document.getElementById('resumeBtn').onclick=togglePause;
 document.getElementById('pauseBtn').onclick=togglePause;
-document.getElementById('quitBtn').onclick=()=>{state=S.MENU;show('pauseScreen',false);
-  show('startScreen',true);document.getElementById('hud').classList.remove('on');};
-document.getElementById('menuBtn').onclick=()=>{state=S.MENU;show('overScreen',false);show('startScreen',true);};
+document.getElementById('quitBtn').onclick=goMenu;
+document.getElementById('menuBtn').onclick=goMenu;
 document.getElementById('muteBtn').onclick=()=>{Sound.init();
   document.getElementById('muteBtn').textContent=Sound.toggle()?'🔇':'♪';};
 
@@ -676,7 +882,7 @@ function update(dt){
   if(state!==S.PLAY){
     game.dist+=250*dt;
     while(game.nextScene<game.dist+FAR_Z){ spawnScene(game.nextScene); game.nextScene+=rnd(85,200); }
-    recycleScenery(); updateJanani(dt,true); updatePetals(dt);
+    recycleScenery(); updateGirl(dt,true); updatePetals(dt);
     return;
   }
 
@@ -717,8 +923,9 @@ function update(dt){
   while(game.nextGift<game.dist+FAR_Z){ spawnGift(game.nextGift); game.nextGift+=rnd(2600,4200); }
   while(game.nextScene<game.dist+FAR_Z){ spawnScene(game.nextScene); game.nextScene+=rnd(85,200); }
 
+  const LM=girl().landmarks;
   if(game.dist/10>game.nextLandmark){
-    const lm=LANDMARKS[game.landmarkIdx%LANDMARKS.length];
+    const lm=LM[game.landmarkIdx%LM.length];
     game.landmarkIdx++; game.nextLandmark+=400;
     toast('▸ '+lm[0],lm[1]); Sound.milestone(); game.score+=120;
   }
@@ -758,7 +965,7 @@ function update(dt){
     }
   }
 
-  recycleScenery(); updateJanani(dt,false); updatePetals(dt);
+  recycleScenery(); updateGirl(dt,false); updatePetals(dt);
 
   for(let i=game.fx.length-1;i>=0;i--){
     const f=game.fx[i]; f.life-=dt;
@@ -775,8 +982,8 @@ function update(dt){
   updateHUD();
 }
 
-function updateJanani(dt,idle){
-  const j=game.jan;
+function updateGirl(dt,idle){
+  const j=game.jan, g=girl();
   j.runT+=dt*10.4;
   j.glance=Math.max(0,j.glance-dt*.55);
   j.talk=Math.max(0,j.talk-dt*1.1);
@@ -809,7 +1016,7 @@ function updateJanani(dt,idle){
 
   j.hop-=dt;
   if(j.hop<=0){ j.hop=rnd(4.5,7.5);
-    say(game.runTime>CATCH_TIME-9 ? pick(LINES_NEAR) : pick(LINES)); }
+    say(game.runTime>CATCH_TIME-9 ? pick(g.near) : pick(g.lines)); }
 }
 function recycleScenery(){
   for(let i=game.scenery.length-1;i>=0;i--)
@@ -822,7 +1029,7 @@ function onCrash(heavy,x,h){
   game.lives--; buildHearts();
   game.inv=2.0;
   game.leadPen=Math.min(420,game.leadPen+(heavy?210:140));
-  if(game.lives>0) say(pick(LINES_HIT),2300);
+  if(game.lives>0) say(pick(girl().hit),2300);
 }
 function collect(p,px,py){
   if(p.kind==='coin'){ game.coins++; game.score+=12*(game.dbl>0?2:1); Sound.coin(); burst(px,py,'#ffd34d',6); return; }
@@ -870,7 +1077,7 @@ function updatePetals(dt){
 }
 
 /* ======================================================================
-   CATCH CUTSCENE  →  he reaches her, she runs into her house, he follows
+   CATCH CUTSCENE
 ====================================================================== */
 function beginCatch(){
   state=S.CATCH; game.catchT=0;
@@ -894,32 +1101,137 @@ function updateCatch(dt){
 }
 
 /* ======================================================================
-   THE PROPOSAL  (typed conversation inside Janani's house)
+   THE TYPED PROPOSALS — one script per girl
 ====================================================================== */
-const DLG=[
-  { who:'JANANI', tam:'ஏய்! காலேஜ்ல இருந்து வீடு வரைக்கும் ஓடி வந்துட்டியா?… உன் பேரு என்ன?',
-    en:'You chased me from college all the way home?! … WHAT IS YOUR NAME?',
-    ph:'Type your name…', key:'playerName' },
-  { who:'JANANI', tam:'சரி {name}… உனக்கு என்ன வேணும்?',
-    en:'OK {name}… WHAT DO YOU WANT?', ph:'Type what you want…', key:'wantLine' },
-  { who:'JANANI', tam:'புரியலையே… தெளிவா சொல்லு!',
-    en:'I DID NOT GET IT… TELL ME CLEARLY!', ph:'Say it clearly…', key:'clearLine' },
-  { who:'JANANI', tam:'…சரி. மண்டியிட்டு என்ன பண்ற? இப்ப சொல்லு.',
-    en:'…FINE. WHY ARE YOU KNEELING? SAY IT NOW.', ph:'Type your proposal 🌹', key:'proposalLine', pose:'kneel' }
-];
-let dlgStep=0, dlgEnding=null, endStep=0, dlgBusy=false;
+const SCRIPTS={
+harshini:{
+  q:[
+    { tam:'ஏய்! IT பிளாக் முழுக்க ஃபாலோ பண்ணிட்டு வந்துட்டியா?… உன் பேரு என்ன?',
+      en:'YOU FOLLOWED ME ACROSS THE WHOLE IT BLOCK?! … WHAT IS YOUR NAME?',
+      ph:'Type your name…' },
+    { tam:'சரி {name}… உனக்கு என்ன வேணும்? சொல்லு, camera roll ஆகுது!',
+      en:'OK {name}… WHAT DO YOU WANT? SAY IT, THE CAMERA IS ROLLING!',
+      ph:'Type what you want…' },
+    { tam:'புரியலையே… தெளிவா சொல்லு!',
+      en:'I DID NOT GET IT… TELL ME CLEARLY!', ph:'Say it clearly…' },
+    { tam:'…அடடே. மண்டியிட்டு? சரி, இப்ப சொல்லு. 🌹',
+      en:'…OHO. ON ONE KNEE? FINE, SAY IT NOW.', ph:'Type your proposal 🌹', pose:'kneel' }
+  ],
+  yes:[
+    { tam:'பீரித்திவ்?! அதே பீரித்திவ் தானே?! மணப்பாறை பீரித்திவ்?!',
+      en:'BIREETHIVE?! THE SAME BIREETHIVE?! MANAPPARAI BIREETHIVE?!' },
+    { tam:'நான் ஒரு trending ASIAN PAINTS influencer டா — 2 லட்சம் followers!',
+      en:'I AM A TRENDING ASIAN PAINTS INFLUENCER — 2 LAKH FOLLOWERS!' },
+    { tam:'என் சுவர்ல எல்லா shade-ம் இருக்கு… ஆனா என் மனசுல உன் colour தான்! 🎨',
+      en:'MY WALL HAS EVERY SHADE… BUT MY HEART HAS ONLY YOUR COLOUR!' },
+    { tam:'YOU ARE MY LIFE பீரித்திவ்! “Har ghar kuch kehta hai” — என் வீடு உன் பேரு தான் சொல்லுது!',
+      en:'YOU ARE MY LIFE, BIREETHIVE! EVERY HOME SAYS SOMETHING — MINE SAYS YOUR NAME!' },
+    { tam:'YES டா! ரெண்டு பேரும் சேர்ந்து ஒரு reel போடலாம்! ❤',
+      en:'YES! LET US SHOOT A COUPLE REEL RIGHT NOW!', pose:'hug' },
+    { tam:'(ஹர்ஷினி கட்டிப்பிடிச்சு கன்னத்துல ஒரு முத்தம்… camera still rolling) 💋',
+      en:'(HARSHINI HUGS HIM AND KISSES HIS CHEEK — THE CAMERA IS STILL ROLLING)', pose:'kiss' }
+  ],
+  no:[
+    { tam:'ம்ம்… {name}…', en:'HMM… {NAME}…' },
+    { tam:'சாரி {name} — நீ ஏற்கனவே என் pookie, ஃபிரெண்ட் தான்! 🫶',
+      en:'SORRY {NAME} — YOU ARE ALREADY MY POOKIE, JUST A FRIEND!' },
+    { tam:'என் மனசுல ஒரே ஒருத்தன் தான் — பீரித்திவ். போய் அவன பாரு!',
+      en:'THERE IS ONLY ONE BOY IN MY HEART — BIREETHIVE. GO FIND HIM!', pose:'sad' }
+  ]
+},
+janani:{
+  q:[
+    { tam:'ஏய்! CSBS பிளாக்ல இருந்து வீடு வரைக்கும் ஓடி வந்துட்டியா?… உன் பேரு என்ன?',
+      en:'YOU CHASED ME FROM THE CSBS BLOCK TO MY HOUSE?! … WHAT IS YOUR NAME?',
+      ph:'Type your name…' },
+    { tam:'ஒரு நிமிஷம்… நீ என் அண்ணன் தரன் ஓட ஃபிரெண்டா? (YES / NO)',
+      en:'WAIT… ARE YOU A FRIEND OF MY BROTHER DHARAN? (TYPE YES OR NO)',
+      ph:'Type YES or NO…' },
+    { tam:'புரியலையே… தெளிவா சொல்லு!',
+      en:'I DID NOT GET IT… TELL ME CLEARLY!', ph:'Say it clearly…' },
+    { tam:'…சரி. மண்டியிட்டு என்ன பண்ற? இப்ப சொல்லு. 🌹',
+      en:'…FINE. WHY ARE YOU KNEELING? SAY IT NOW.', ph:'Type your proposal 🌹', pose:'kneel' }
+  ],
+  yes:[
+    { tam:'தரன் அண்ணன் ஓட ஃபிரெண்டா?! அப்போ நீ தான் அந்த பீரித்திவ்!',
+      en:"MY BROTHER DHARAN'S FRIEND?! THEN YOU ARE THAT BIREETHIVE!" },
+    { tam:'அண்ணன் தினமும் உன்ன பத்தி தான் பேசுவான் — “பீரித்திவ் நல்ல பையன்”னு!',
+      en:'HE TALKS ABOUT YOU EVERY DAY — “BIREETHIVE IS A GOOD BOY”!' },
+    { tam:'நானும் பஸ் நம்பர் 66 தான் மாமா! தினமும் உன்னை பாத்துட்டு தான் இருக்கேன்! 😍',
+      en:'I AM ALSO IN BUS NUMBER 66, MAMA! I SEE YOU EVERY SINGLE DAY!' },
+    { tam:'ஐ லவ் யூ பீரித்திவ்! அண்ணன்கிட்ட நீயே கேளு! ❤',
+      en:'I LOVE YOU, BIREETHIVE! NOW GO ASK MY BROTHER YOURSELF!', pose:'hug' },
+    { tam:'(ஜானனி கட்டிப்பிடிச்சு கன்னத்துல ஒரு முத்தம்) 💋',
+      en:'(JANANI HUGS HIM AND KISSES HIS CHEEK)', pose:'kiss' }
+  ],
+  no:[
+    { tam:'ம்ம்… {name}…', en:'HMM… {NAME}…' },
+    { tam:'சாரி {name} — நீ ஏற்கனவே என் pookie, ஃபிரெண்ட் தான்! 🫶',
+      en:'SORRY {NAME} — YOU ARE ALREADY MY POOKIE, JUST A FRIEND!' },
+    { tam:'என் அண்ணன் தரன் ஓட ஃபிரெண்ட் பீரித்திவ் தான் எனக்கு பிடிக்கும். போ!',
+      en:"I ONLY LIKE BIREETHIVE, MY BROTHER DHARAN'S FRIEND. GO!", pose:'sad' }
+  ],
+  notfriend:[
+    { tam:'அண்ணன் ஃபிரெண்ட் இல்லையா?… அப்போ பேச்சே வேண்டாம்!',
+      en:'NOT MY BROTHER\u2019S FRIEND?… THEN WE HAVE NOTHING TO TALK ABOUT!' },
+    { tam:'தரன் அண்ணன் சைபர் செக்யூரிட்டி 3rd year சீனியர். அவன் ஃபிரெண்ட் மட்டும் தான் allowed!',
+      en:'DHARAN IS A CYBER SECURITY 3RD YEAR SENIOR. ONLY HIS FRIENDS ARE ALLOWED!' },
+    { tam:'போ! இல்லன்னா அண்ணன்கிட்ட சொல்லிடுவேன்! 🫶',
+      en:'GO! OR I WILL TELL MY BROTHER!', pose:'sad' }
+  ]
+},
+aiswarya:{
+  q:[
+    { tam:'ஏய்! AI & DS பிளாக்ல இருந்து இங்க வரைக்கும்?… உன் பேரு என்ன?',
+      en:'ALL THE WAY FROM THE AI & DS BLOCK?! … WHAT IS YOUR NAME?',
+      ph:'Type your name…' },
+    { tam:'சரி {name}… உனக்கு என்ன வேணும்?',
+      en:'OK {name}… WHAT DO YOU WANT?', ph:'Type what you want…' },
+    { tam:'புரியலையே… தெளிவா சொல்லு!',
+      en:'I DID NOT GET IT… TELL ME CLEARLY!', ph:'Say it clearly…' },
+    { tam:'…மண்டியிட்டியா? ஐயோ. சரி, சொல்லு. 🌹',
+      en:'…ON YOUR KNEE? OH NO. FINE, SAY IT.', ph:'Type your proposal 🌹', pose:'kneel' }
+  ],
+  reject:[
+    { tam:'ம்ம்… {name}… நிறுத்து.', en:'HMM… {NAME}… STOP.' },
+    { tam:'நான் ஏற்கனவே வேறொருத்தன்கூட கமிட்டட்!',
+      en:'I AM ALREADY COMMITTED WITH ANOTHER GUY!' },
+    { tam:'அப்புறமும் என் பின்னாடியே வர்றியா? நீ pookie இல்ல… நீ ஒரு பொறுக்கி!',
+      en:'AND STILL YOU ARE FOLLOWING ME? YOU ARE NOT A POOKIE — YOU ARE A PORIKKI!' },
+    { tam:'போடா! எனக்கு உன்ன பிடிக்கவே பிடிக்காது! I HATE YOU!',
+      en:'GO AHEAD! I HATE YOU!', pose:'angry' },
+    { tam:'…அதோ வந்துட்டான் என் ஆளு. இனிமே இந்த பக்கமே வராத! 😘',
+      en:'…AND THERE COMES MY MAN. NOW GET LOST!', pose:'rival', who:'AISWARYA' },
+    { tam:'அடப்பாவி… இவ ஏற்கனவே booked! 😎',
+      en:'(HER BOYFRIEND WALKS IN AND KISSES HER. BIREETHIVE: 🧍)', pose:'rival', who:'NARRATOR' },
+    { tam:'பீரித்திவ்! எங்களுக்கு நீ தான் டா! வா, bus 66 கிளம்பப்போகுது!',
+      en:'BIREETHIVE! WE ARE THE ONES WHO LOVE YOU! COME, BUS 66 IS LEAVING!',
+      pose:'leave', who:'HARSHINI & JANANI' },
+    { tam:'(இரண்டு பேரையும் கூட்டிட்டு பீரித்திவ் கிளம்பினான்… AI & DS பொண்ணு பாத்துட்டே நின்னா) 😏',
+      en:'(BIREETHIVE WALKS AWAY WITH HARSHINI AND JANANI. AI & DS GIRL: 😐)',
+      pose:'leave', who:'NARRATOR' }
+  ]
+}
+};
+
+let dlgStep=0, dlgEnding=null, endStep=0, dlgBusy=false, dlgQ=null, endKind='';
 
 function beginTalk(){
-  state=S.TALK; dlgStep=0; endStep=0; dlgEnding=null; dlgBusy=false; game.talkT=0;
+  state=S.TALK; dlgStep=0; endStep=0; dlgEnding=null; dlgBusy=false; endKind=''; game.talkT=0;
+  dlgQ=SCRIPTS[girl().id].q;
   document.getElementById('talk').classList.add('on');
+  document.getElementById('myLine').classList.remove('on');
   showDlgStep();
 }
-function fill(s){ return s.replace(/\{name\}/g, game.playerName||'thambi'); }
+function fill(s){
+  const n=game.playerName||'thambi';
+  return String(s).replace(/\{name\}/g,n).replace(/\{NAME\}/g,n.toUpperCase());
+}
 function showDlgStep(){
-  const d=DLG[dlgStep];
+  const d=dlgQ&&dlgQ[dlgStep];
   if(!d) return;
   dlgBusy=false;
-  document.getElementById('talkWho').textContent=d.who;
+  document.getElementById('talkWho').textContent=girl().name;
   document.getElementById('talkTam').textContent=fill(d.tam);
   document.getElementById('talkEn').textContent=fill(d.en);
   const inp=document.getElementById('dlgInput');
@@ -935,94 +1247,132 @@ function myLine(txt){
   document.getElementById('myLineText').textContent='“'+txt+'”';
   m.classList.add('on');
 }
+const HERO_RE=/(bireethive|bireethiv|birethive|biruthive|பீரித்திவ்)/i;
+const YES_RE=/^\s*(y|ya|yes|yeah|yep|yup|yess+|sure|ofcourse|of course|correct|right|sari|seri|சரி|ஆம்|ஆமா|ama|aama|yesda|yes da|true|1)\b/i;
+
 function submitDlg(){
   if(state!==S.TALK||dlgBusy) return;
   const inp=document.getElementById('dlgInput');
   let v=(inp.value||'').trim();
-  if(!v) { try{inp.focus();}catch(e){} return; }
+  if(!v){ try{inp.focus();}catch(e){} return; }
   if(v.length>60) v=v.slice(0,60);
-  const d=DLG[dlgStep];
+  const d=dlgQ&&dlgQ[dlgStep];
   if(!d) return;
   dlgBusy=true; inp.value='';
-  game[d.key]=v;
-  if(d.key==='playerName'){
-    game.isDharan=/(^|\s)dharan(\s|$)/i.test(v) || /தரன்/.test(v);
-  }
-  myLine(v);
-  Sound.type();
+  if(dlgStep===0){ game.playerName=v; game.isHero=HERO_RE.test(v); }
+  if(girl().id==='janani'&&dlgStep===1) game.saidYes=YES_RE.test(v);
+  game.answers[dlgStep]=v;
+  myLine(v); Sound.type();
   dlgStep++;
-  if(dlgStep<DLG.length){ setTimeout(showDlgStep,650); }
-  else { setTimeout(startEnding,900); }
+  if(dlgStep<dlgQ.length) setTimeout(showDlgStep,650);
+  else setTimeout(startEnding,900);
 }
 document.getElementById('dlgSend').onclick=submitDlg;
 document.getElementById('dlgInput').addEventListener('keydown',e=>{
   if(e.key==='Enter'){ e.preventDefault(); submitDlg(); }
 });
 
-/* ---------- the endings ---------- */
-const END_DHARAN=[
-  { tam:'டேய்… தரன்?! நீ தானா?', en:'DEI… DHARAN?! IS IT YOU?' },
-  { tam:'நானும் பஸ் நம்பர் 66 தான் மாமா!! 😍', en:'I AM ALSO IN BUS NUMBER 66, MAMA!!' },
-  { tam:'தினமும் உன்னை பாத்துட்டு தான் இருக்கேன்… எனக்கும் உன்ன புடிக்கும்!',
-    en:'I HAVE BEEN WATCHING YOU EVERY DAY… I LIKE YOU TOO!' },
-  { tam:'YES டா! ஐ லவ் யூ தரன்! ❤', en:'YES! I LOVE YOU, DHARAN!', pose:'hug' },
-  { tam:'(ஜானனி கட்டிப்பிடிச்சு கன்னத்துல ஒரு முத்தம்) 💋', en:'(JANANI HUGS HIM AND KISSES HIS CHEEK)', pose:'kiss' }
-];
-function endOther(){
-  const n=game.playerName||'thambi';
-  return [
-    { tam:'ம்ம்… '+n+'…', en:'HMM… '+n.toUpperCase()+'…' },
-    { tam:'சாரி '+n+' — நீ ஏற்கனவே என் pookie, ஃபிரெண்ட் தான்! 🫶',
-      en:'SORRY, YOU ARE ALREADY MY POOKIE — MY FRIEND, '+n.toUpperCase()+'!' },
-    { tam:'உண்மையை சொல்றேன்… நான் ஏற்கனவே தரன்கூட கமிட்டட்.',
-      en:"FINALLY — I AM ALREADY COMMITTED WITH DHARAN." },
-    { tam:'அவன் சைபர் செக்யூரிட்டி 3rd year சீனியர். அவன் தான் எனக்கு எல்லாமே.',
-      en:'HE IS A CYBER SECURITY 3RD YEAR SENIOR. HE IS MY EVERYTHING.' },
-    { tam:'அவனும் தனக்கன்குளம் தான்! நீ எனக்கு நல்ல ஃபிரெண்ட் '+n+'. 🙂',
-      en:'HE IS ALSO FROM THANAKKANKULAM! YOU ARE A GOOD FRIEND, '+n.toUpperCase()+'.', pose:'sad' }
-  ];
-}
 function startEnding(){
   state=S.END; endStep=0; dlgBusy=false;
-  dlgEnding = game.isDharan ? END_DHARAN : endOther();
-  if(game.isDharan) Sound.yes(); else Sound.sad();
+  const id=girl().id, sc=SCRIPTS[id];
+  if(id==='aiswarya'){ endKind='reject'; dlgEnding=sc.reject; Sound.sad(); }
+  else if(id==='janani'){
+    if(!game.isHero){ endKind='friendzone'; dlgEnding=sc.no; Sound.sad(); }
+    else if(!game.saidYes){ endKind='friendzone'; dlgEnding=sc.notfriend; Sound.sad(); }
+    else { endKind='accept'; dlgEnding=sc.yes; Sound.yes(); }
+  } else {
+    if(game.isHero){ endKind='accept'; dlgEnding=sc.yes; Sound.yes(); }
+    else { endKind='friendzone'; dlgEnding=sc.no; Sound.sad(); }
+  }
+  game.accepted=(endKind==='accept');
   document.getElementById('talkRow').style.display='none';
   const nx=document.getElementById('dlgNext');
-  nx.style.display='block'; nx.textContent='CONTINUE ▸';
+  nx.style.display='block';
   document.getElementById('dlgHint').textContent='';
   showEndStep();
 }
 function showEndStep(){
   const e=dlgEnding&&dlgEnding[endStep];
   if(!e) return;
-  document.getElementById('talkWho').textContent='JANANI';
-  document.getElementById('talkTam').textContent=e.tam;
-  document.getElementById('talkEn').textContent=e.en;
+  document.getElementById('talkWho').textContent=e.who||girl().name;
+  document.getElementById('talkTam').textContent=fill(e.tam);
+  document.getElementById('talkEn').textContent=fill(e.en);
   const nx=document.getElementById('dlgNext');
-  nx.textContent = endStep>=dlgEnding.length-1 ? '💌 SEE THE INVITATION ▸' : 'CONTINUE ▸';
+  const last=endStep>=dlgEnding.length-1;
+  nx.textContent = last
+      ? (endKind==='accept' ? '💖 CONTINUE ▸' : (girl().id==='aiswarya' ? '💌 SEE THE INVITATION ▸' : '😭 CONTINUE ▸'))
+      : 'CONTINUE ▸';
+  if(e.pose==='kiss') Sound.love();
+  if(e.pose==='rival'&&e.who==='NARRATOR') Sound.slap();
+  if(e.pose==='leave') Sound.yes();
 }
 document.getElementById('dlgNext').onclick=()=>{
   if(state!==S.END) return;
   endStep++;
   if(endStep<dlgEnding.length){
-    if(game.isDharan) Sound.love(); else Sound.type();
+    if(endKind==='accept') Sound.love(); else Sound.type();
     showEndStep();
-  } else {
-    showWedding();
-  }
+  } else finishChapter();
 };
-function showWedding(){
+function finishChapter(){
   document.getElementById('talk').classList.remove('on');
-  const n=game.playerName||'Bireethive';
-  document.getElementById('inviteTiny').textContent = game.isDharan
-    ? 'Groom: Dharan (that is you!) · Bus route 66 · PSNA College, Dindigul'
-    : 'Chief guest: ' + n + ' — forever pookie, forever friend 🫶';
+  document.getElementById('myLine').classList.remove('on');
+  game.totalScore+=Math.floor(game.score);
+  const g=girl();
+  if(endKind==='accept'){
+    game.cleared[game.chapter]=true; saveProgress();
+    state=S.ROUTE;
+    document.getElementById('clearBar').innerHTML=routeBarHTML(game.chapter);
+    document.getElementById('clTitle').textContent=g.name+' SAID YES!';
+    document.getElementById('clTam').textContent= g.id==='harshini'
+      ? 'நீ தான் என் வாழ்க்கை பீரித்திவ்!' : 'ஐ லவ் யூ பீரித்திவ்!';
+    document.getElementById('clSub').textContent='ROUTE '+(game.chapter+1)+'/3 CLEARED · SCORE '+
+      Math.floor(game.score).toLocaleString('en-IN');
+    document.getElementById('clDesc').innerHTML = g.id==='harshini'
+      ? 'Harshini posted the whole proposal as a reel. It got <b>1.2 million views</b> in four hours and '+
+        '<b>Asian Paints</b> commented a heart.<br>Next up: <i>Janani, CSBS</i> — and her brother Dharan.'
+      : 'Janani already texted her brother <b>Dharan</b>. He replied: “super da thambi 👍”.<br>'+
+        'One route left: <i>Aiswarya, AI &amp; DS</i>. Everybody says do not do it. You are going to do it.';
+    document.getElementById('clNext').textContent = game.chapter<2 ? '▶ NEXT ROUTE: '+GIRLS[game.chapter+1].name : '💌 SEE THE INVITATION';
+    document.getElementById('clFoot').textContent=
+      'TOTAL SCORE SO FAR: '+game.totalScore.toLocaleString('en-IN')+
+      ' · PRESS ENTER OR CLICK THE BUTTON ABOVE TO CONTINUE';
+    primaryAction=goNextRoute;
+    show('clearScreen',true);
+  } else if(g.id==='aiswarya'){
+    game.cleared[2]=true; saveProgress();
+    showWedding();
+  } else {
+    state=S.ROUTE;
+    document.getElementById('fzTitle').textContent='FRIEND ZONED BY '+g.name+' 🫶';
+    document.getElementById('fzTam').textContent='நீ எனக்கு pookie தான்…';
+    document.getElementById('fzSub').textContent=g.route+' · FAILED';
+    document.getElementById('fzDesc').innerHTML = (girl().id==='janani'&&game.isHero&&!game.saidYes)
+      ? 'You told her you are <b>not</b> a friend of her brother <b>Dharan</b>. Wrong answer, thambi. '+
+        'In CSBS, family clearance comes before everything.<br>Run it again and answer <b>YES</b>.'
+      : 'You typed “<b>'+(game.playerName||'???')+'</b>”. She waited her whole life for one particular name '+
+        'and that was not it.<br>Run the route again and introduce yourself properly.';
+    primaryAction=startGame;
+    show('fzScreen',true);
+  }
+}
+function showWedding(){
+  state=S.ROUTE;
+  document.getElementById('talk').classList.remove('on');
+  document.getElementById('myLine').classList.remove('on');
+  const won=game.cleared.filter((c,i)=>c&&i<2).length;
+  document.getElementById('inviteTiny').innerHTML =
+    'Bride #1: <b>Harshini</b> (IT) — Asian Paints influencer, 2 lakh followers &nbsp;·&nbsp; '+
+    'Bride #2: <b>Janani</b> (CSBS) — sister of Dharan, Cyber Security 3rd year<br>'+
+    'NOT invited: <b>Aiswarya (AI &amp; DS)</b> and her boyfriend 😤 &nbsp;·&nbsp; '+
+    'Routes cleared: <b>'+won+'/2</b> &nbsp;·&nbsp; Total score: <b>'+game.totalScore.toLocaleString('en-IN')+'</b>';
+  primaryAction=()=>{ showRouteIntro(0); };
   show('weddingScreen',true);
   Sound.yes();
 }
 function endPose(){
-  if(state===S.TALK) return DLG[dlgStep] && DLG[dlgStep].pose ? DLG[dlgStep].pose : 'stand';
-  if(state===S.END && dlgEnding) return dlgEnding[Math.min(endStep,dlgEnding.length-1)].pose || 'kneel';
+  if(state===S.TALK) return (dlgQ&&dlgQ[dlgStep]&&dlgQ[dlgStep].pose)||'stand';
+  if(state===S.END&&dlgEnding) return dlgEnding[Math.min(endStep,dlgEnding.length-1)].pose||'kneel';
   return 'stand';
 }
 
@@ -1030,14 +1380,15 @@ function endPose(){
    HUD
 ====================================================================== */
 function updateHUD(){
+  const LM=girl().landmarks;
   document.getElementById('scoreVal').textContent=Math.floor(game.score).toLocaleString('en-IN');
   document.getElementById('distVal').textContent=
-    Math.floor(game.dist/10).toLocaleString('en-IN')+' m · '+LANDMARKS[game.landmarkIdx%LANDMARKS.length][0];
+    Math.floor(game.dist/10).toLocaleString('en-IN')+' m · '+LM[game.landmarkIdx%LM.length][0];
   document.getElementById('coinVal').textContent=game.coins;
   const left=Math.max(0,CATCH_TIME-game.runTime);
   document.getElementById('timeVal').textContent=left.toFixed(1)+'s';
   document.getElementById('catchFill').style.width=(game.runTime/CATCH_TIME*100).toFixed(1)+'%';
-  document.getElementById('gapVal').textContent='JANANI IS '+Math.round(game.jan.lead/10)+' m AHEAD';
+  document.getElementById('gapVal').textContent=girl().name+' IS '+Math.round(game.jan.lead/10)+' m AHEAD';
   const box=document.getElementById('pwrBox'),rows=[];
   if(game.magnet>0) rows.push(['🥤','JIGARTHANDA',game.magnet/9,'#ff9ec4']);
   if(game.dbl>0) rows.push(['🌾','2× SCORE',game.dbl/9,'#ffd34d']);
@@ -1085,7 +1436,6 @@ function drawSky(){
     ctx.quadraticCurveTo(bx+3,by-3-f,bx+6,by); ctx.stroke();
   }
 }
-/* Palani & Sirumalai hills behind the PSNA campus */
 function drawHills(){
   const par=-camX*.22;
   ctx.fillStyle=RGB(theme.hill[0]); hillRange(par*.5,horizonY,H*.13,420,7);
@@ -1176,7 +1526,7 @@ function drawBlock(d){
   }
   ctx.fillStyle='#1f6b4a'; ctx.fillRect(-w*.42,-h-26*d.sc,w*.84,13*d.sc);
   ctx.fillStyle='#fff6cf'; ctx.font='bold '+(9.5*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
-  ctx.textAlign='center'; ctx.fillText(d.label||'CSE BLOCK',0,-h-16.5*d.sc);
+  ctx.textAlign='center'; ctx.fillText(d.label||'PSNA BLOCK',0,-h-16.5*d.sc);
   ctx.fillStyle='#5a3a1a'; ctx.fillRect(-11*d.sc,-26*d.sc,22*d.sc,26*d.sc);
 }
 function drawLibrary(d){
@@ -1184,7 +1534,6 @@ function drawLibrary(d){
   shadow(w*.6,.26);
   ctx.fillStyle='#f2e6cc'; ctx.fillRect(-w/2,-h,w,h);
   ctx.fillStyle='#c9b58c'; ctx.fillRect(-w/2,-h,w,9*d.sc);
-  // portico columns
   ctx.fillStyle='#fffaf0';
   for(let i=0;i<5;i++) ctx.fillRect(-w*.44+i*w*.21,-h*.72,w*.055,h*.72);
   ctx.fillStyle='#b9533a'; quad(-w*.56,-h,w*.56,-h,w*.46,-h-20*d.sc,-w*.46,-h-20*d.sc);
@@ -1204,7 +1553,6 @@ function drawCanteen(d){
   ctx.fillStyle='#4a4a4a'; ctx.fillRect(-w*.3,-h*.6,w*.6,h*.6);
   ctx.fillStyle='#ffd34d';
   for(let i=0;i<5;i++){ ctx.beginPath(); ctx.arc(-w*.24+i*w*.12,-h*.34,3.4*d.sc,0,6.2832); ctx.fill(); }
-  // plastic chairs outside
   ctx.fillStyle='#2f7a9a';
   for(let i=0;i<3;i++){ const x=w*.34+i*9*d.sc; ctx.fillRect(x,-14*d.sc,8*d.sc,14*d.sc); ctx.fillRect(x,-22*d.sc,3*d.sc,9*d.sc); }
 }
@@ -1217,7 +1565,6 @@ function drawHostel(d){
     ctx.fillStyle='#39597f';
     for(let i=0;i<5;i++) ctx.fillRect(-w*.42+i*w*.18,yy,w*.11,(h/5)*.45);
     ctx.fillStyle='#9aa3ad'; ctx.fillRect(-w/2,yy+(h/5)*.45,w,2.6*d.sc);
-    // hanging clothes
     ctx.fillStyle=['#e8206c','#2f9ad0','#ffd34d','#4ab06a'][f%4];
     ctx.fillRect(-w*.3+((f*23)%40)*d.sc, yy+(h/5)*.47, 7*d.sc, 11*d.sc);
   }
@@ -1245,7 +1592,6 @@ function drawCourt(d){
   ctx.strokeStyle='rgba(255,255,255,.75)'; ctx.lineWidth=2;
   ctx.beginPath(); ctx.ellipse(0,0,w*.42,w*.13,0,0,6.2832); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(-w*.42,0); ctx.lineTo(w*.42,0); ctx.stroke();
-  // volleyball net
   ctx.strokeStyle='#8d8d93'; ctx.lineWidth=3;
   ctx.beginPath(); ctx.moveTo(-w*.3,0); ctx.lineTo(-w*.3,-40*d.sc); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(w*.3,0); ctx.lineTo(w*.3,-40*d.sc); ctx.stroke();
@@ -1258,7 +1604,6 @@ function drawCourt(d){
 function drawBusBay(d){
   const w=160*d.sc,h=56*d.sc;
   shadow(w*.5,.3);
-  // parked college bus, route 66
   ctx.fillStyle='#f2c300'; ctx.fillRect(-w/2,-h,w,h);
   ctx.fillStyle='#1f4f7a'; ctx.fillRect(-w/2,-h*.78,w,h*.3);
   ctx.fillStyle='#17313f';
@@ -1321,14 +1666,13 @@ function drawHedge(d){
   for(let i=0;i<9;i++) { ctx.beginPath(); ctx.arc(-w/2+i*w/8,-22*d.sc,3*d.sc,0,6.2832); ctx.fill(); }
 }
 function drawPsnaSign(d){
-  const w=150*d.sc,h=40*d.sc;
+  const w=150*d.sc;
   ctx.fillStyle='#2f7a3e'; ctx.beginPath(); ctx.ellipse(0,0,w*.56,w*.14,0,0,6.2832); ctx.fill();
   ctx.fillStyle='#fffdf4'; ctx.font='900 '+(30*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
   ctx.textAlign='center'; ctx.fillText('PSNA',0,-10*d.sc);
   ctx.strokeStyle='#c2452f'; ctx.lineWidth=2; ctx.strokeText('PSNA',0,-10*d.sc);
   ctx.fillStyle='#1f4f7a'; ctx.font='bold '+(8*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
   ctx.fillText('ENGINEERING & TECHNOLOGY',0,-1*d.sc);
-  void h;
 }
 function drawGate2(d){
   const w=210*d.sc,h=120*d.sc;
@@ -1343,19 +1687,52 @@ function drawGate2(d){
   ctx.fillStyle='#ffd34d'; ctx.font='bold '+(7.4*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
   ctx.fillText('KOTHANDARAMAN NAGAR · DINDIGUL 624622',0,-h+5*d.sc);
 }
-function drawStudents2(d){
-  const cols=[['#e8206c','#24344f'],['#2f9ad0','#3a2b1a'],['#4ab06a','#24344f'],['#ffd34d','#2b2b3a']];
-  for(let i=0;i<3;i++){
-    const x=(i-1)*20*d.sc, c=cols[(i+Math.floor(d.sway*3))%4], s=d.sc*(0.9+(i%2)*0.1);
-    ctx.save(); ctx.translate(x,0); ctx.scale(s,s);
-    shadow(11,.22);
-    ctx.fillStyle=c[1]; ctx.fillRect(-6,-26,12,26);
-    ctx.fillStyle=c[0]; ctx.fillRect(-8,-52,16,27);
-    ctx.fillStyle='#9a6238'; ctx.beginPath(); ctx.arc(0,-60,8,0,6.2832); ctx.fill();
-    ctx.fillStyle='#17120e'; ctx.beginPath(); ctx.arc(0,-62,8.2,Math.PI,Math.PI*2); ctx.fill();
-    ctx.fillStyle='#2b2b2b'; ctx.fillRect(-11,-48,5,20);   // bag strap
-    ctx.restore();
+/* route 1 — giant Asian-Paints style hoarding with Harshini on it */
+function drawPaintHoard(d){
+  const w=190*d.sc,h=118*d.sc,ph=150*d.sc;
+  shadow(16,.2);
+  ctx.fillStyle='#8d8d93'; ctx.fillRect(-10*d.sc,-ph,8*d.sc,ph); ctx.fillRect(4*d.sc,-ph,8*d.sc,ph);
+  ctx.fillStyle='#f6f2e8'; ctx.fillRect(-w/2,-ph-h,w,h);
+  const stripes=['#ff5e1a','#ffc83d','#2ad1be','#2f7ad0','#e8206c'];
+  for(let i=0;i<5;i++){ ctx.fillStyle=stripes[i]; ctx.fillRect(-w/2,-ph-h+i*h*.2,w*.17,h*.2); }
+  ctx.fillStyle='#17120e'; ctx.textAlign='left';
+  ctx.font='900 '+(15*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
+  ctx.fillText('ASIAN PAINTS',-w*.26,-ph-h*.68);
+  ctx.font='bold '+(8.6*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
+  ctx.fillStyle='#c2452f'; ctx.fillText('HAR GHAR KUCHH KEHTA HAI',-w*.26,-ph-h*.52);
+  ctx.fillStyle='#1f4f7a'; ctx.fillText('ft. HARSHINI · IT DEPT',-w*.26,-ph-h*.38);
+  ctx.fillStyle='#17a398'; ctx.fillRect(-w*.26,-ph-h*.3,w*.38,h*.2);
+  ctx.fillStyle='#fff'; ctx.font='bold '+(8*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
+  ctx.fillText('2,00,000 FOLLOWERS',-w*.24,-ph-h*.16);
+  // tiny influencer portrait
+  ctx.save(); ctx.translate(w*.33,-ph-h*.22); ctx.scale(.52*d.sc,.52*d.sc);
+  ctx.fillStyle='#b87a4e'; ctx.beginPath(); ctx.arc(0,-30,22,0,6.2832); ctx.fill();
+  ctx.fillStyle='#2a1a12'; ctx.beginPath(); ctx.arc(0,-36,23,Math.PI,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(-20,-26,8,18,.3,0,6.2832); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(20,-26,8,18,-.3,0,6.2832); ctx.fill();
+  ctx.fillStyle='#17a398'; ctx.fillRect(-20,-10,40,34);
+  ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(-7,-30,5,0,6.2832); ctx.arc(7,-30,5,0,6.2832); ctx.fill();
+  ctx.fillStyle='#17110c'; ctx.beginPath(); ctx.arc(-6,-29,2.4,0,6.2832); ctx.arc(8,-29,2.4,0,6.2832); ctx.fill();
+  ctx.restore();
+  ctx.textAlign='center';
+}
+/* route 3 — server hall */
+function drawServerHall(d){
+  const w=150*d.sc,h=112*d.sc;
+  shadow(w*.55,.26);
+  ctx.fillStyle='#3a3f52'; ctx.fillRect(-w/2,-h,w,h);
+  ctx.fillStyle='#2a2f40'; ctx.fillRect(-w/2,-h,w*.2,h);
+  for(let r=0;r<4;r++) for(let c=0;c<5;c++){
+    ctx.fillStyle='#1b1f2c'; ctx.fillRect(-w*.42+c*w*.17,-h+10*d.sc+r*h*.23,w*.13,h*.18);
+    const on=((r*5+c+Math.floor(game.t*3))%7)<4;
+    ctx.fillStyle=on?'#4af0a0':'#1f6b4a';
+    ctx.fillRect(-w*.40+c*w*.17,-h+13*d.sc+r*h*.23,w*.03,h*.03);
+    ctx.fillStyle=((r+c)%3===0)?'#ffd34d':'#2f9ad0';
+    ctx.fillRect(-w*.34+c*w*.17,-h+13*d.sc+r*h*.23,w*.03,h*.03);
   }
+  ctx.fillStyle='#7a4fd6'; ctx.fillRect(-w*.46,-h-18*d.sc,w*.92,16*d.sc);
+  ctx.fillStyle='#fff'; ctx.font='bold '+(8.6*d.sc).toFixed(0)+'px Trebuchet MS, sans-serif';
+  ctx.textAlign='center'; ctx.fillText('AI & DS · GPU SERVER HALL',0,-h-6.5*d.sc);
 }
 function drawTree(d){
   const sw=Math.sin(game.t*1.2+d.sway)*.04, h=120*d.sc;
@@ -1379,6 +1756,11 @@ function drawLamp(d){
   ctx.strokeStyle='#8d8d93'; ctx.lineWidth=5; ctx.lineCap='round';
   ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-h); ctx.quadraticCurveTo(0,-h-16,-20,-h-16); ctx.stroke();
   ctx.fillStyle='#e8ecf0'; ctx.beginPath(); ctx.ellipse(-22,-h-14,9,5,0,0,6.2832); ctx.fill();
+  if(girl().id==='aiswarya'&&game.runTime>CATCH_TIME*.45){
+    const gl=ctx.createRadialGradient(-22,-h-14,2,-22,-h-14,54);
+    gl.addColorStop(0,'rgba(255,214,140,.5)'); gl.addColorStop(1,'rgba(255,214,140,0)');
+    ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(-22,-h-14,54,0,6.2832); ctx.fill();
+  }
 }
 function drawWatertank(d){
   const h=120*d.sc;
@@ -1392,7 +1774,8 @@ function drawWatertank(d){
 }
 const SCENE_FN={block:drawBlock,library:drawLibrary,canteen:drawCanteen,hostel:drawHostel,
   auditorium:drawAuditorium,court:drawCourt,busbay:drawBusBay,bikepark:drawBikepark,flag:drawFlag,
-  notice:drawNotice,hedge:drawHedge,psnasign:drawPsnaSign,gate2:drawGate2,students2:drawStudents2,
+  notice:drawNotice,hedge:drawHedge,psnasign:drawPsnaSign,gate2:drawGate2,
+  painthoard:drawPaintHoard,serverhall:drawServerHall,
   tree:drawTree,lamp:drawLamp,watertank:drawWatertank};
 
 /* ====================== OBSTACLES ====================== */
@@ -1496,7 +1879,7 @@ function drawTeacart(){
   ctx.fillStyle='#8a6a3f'; ctx.fillRect(-42,-54,84,12);
   ctx.fillStyle='#6d5230'; ctx.fillRect(-38,-42,6,42); ctx.fillRect(32,-42,6,42);
   for(let i=0;i<6;i++){ ctx.fillStyle=i%2?'#1f8a5a':'#f2efe4'; ctx.fillRect(-46+i*15,-84,15,30); }
-  ctx.fillStyle='#c0c4c8'; ctx.fillRect(-26,-74,22,22);        // tea urn
+  ctx.fillStyle='#c0c4c8'; ctx.fillRect(-26,-74,22,22);
   ctx.fillStyle='#8a5a2a'; ctx.beginPath(); ctx.arc(-15,-78,5,0,6.2832); ctx.fill();
   ctx.fillStyle='#f5c03a'; for(let i=0;i<4;i++){ ctx.beginPath(); ctx.arc(6+i*10,-60,5,0,6.2832); ctx.fill(); }
   ctx.fillStyle='#3a2a16'; ctx.fillRect(-44,-92,88,8);
@@ -1557,7 +1940,7 @@ function drawBanner(){
   ctx.fillStyle='#fff6cf'; ctx.font='bold 11px Trebuchet MS'; ctx.textAlign='center';
   ctx.fillText('PSNA CULTURALS',0,-129);
   ctx.fillStyle='#20160a'; ctx.font='bold 10px Trebuchet MS';
-  ctx.fillText('SYMPOSIUM 2027',0,-112); ctx.fillText('CSE · CYBER SECURITY',0,-99);
+  ctx.fillText('SYMPOSIUM 2027',0,-112); ctx.fillText(girl().dept.split(' · ')[0],0,-99);
   ctx.fillStyle='#1f6b4a'; ctx.fillRect(-50,-90,100,24);
   ctx.fillStyle='#fff'; ctx.font='bold 9px Trebuchet MS'; ctx.fillText('SLIDE UNDER!',0,-74);
   ctx.fillStyle='#2f7a3e';
@@ -1572,9 +1955,120 @@ function drawBarpole(){
   ctx.fillStyle='#20160a'; ctx.font='bold 7.6px Trebuchet MS'; ctx.textAlign='center';
   ctx.fillText('CAMPUS BARRIER',0,-86.5);
 }
+/* ---- route 1 : Asian Paints props ---- */
+const PAINT_COLS=['#ff5e1a','#2ad1be','#ffc83d','#2f7ad0','#e8206c','#4ab06a'];
+function drawPaintBucket(o){
+  shadow(34,.28);
+  for(let i=-1;i<=1;i++){
+    const c=PAINT_COLS[(i+1+Math.floor(o.wob*3))%PAINT_COLS.length];
+    ctx.save(); ctx.translate(i*26,0);
+    ctx.fillStyle='#e8e8ea';
+    ctx.beginPath(); ctx.moveTo(-13,0); ctx.lineTo(-11,-30); ctx.lineTo(11,-30); ctx.lineTo(13,0); ctx.closePath(); ctx.fill();
+    ctx.fillStyle=c; ctx.fillRect(-12,-24,24,13);
+    ctx.fillStyle='#d2d2d6'; ctx.beginPath(); ctx.ellipse(0,-30,11,4,0,0,6.2832); ctx.fill();
+    ctx.strokeStyle='#9a9aa0'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(0,-32,9,Math.PI,0); ctx.stroke();
+    ctx.fillStyle=c; ctx.beginPath(); ctx.ellipse(0,-29,9,3,0,0,6.2832); ctx.fill();
+    ctx.restore();
+  }
+  ctx.fillStyle='#17120e'; ctx.font='bold 7px Trebuchet MS'; ctx.textAlign='center';
+  ctx.fillText('WET PAINT — JUMP!',0,10);
+}
+function drawPaintDrum(o){
+  shadow(42,.32);
+  const c=PAINT_COLS[Math.floor(o.wob*2)%PAINT_COLS.length];
+  ctx.fillStyle=c; ctx.fillRect(-32,-96,64,96);
+  ctx.fillStyle='rgba(255,255,255,.22)'; ctx.fillRect(-32,-96,16,96);
+  ctx.fillStyle='rgba(0,0,0,.18)'; ctx.fillRect(18,-96,14,96);
+  ctx.fillStyle='#f4f4f6'; ctx.fillRect(-32,-70,64,24);
+  ctx.fillStyle='#17120e'; ctx.font='900 11px Trebuchet MS'; ctx.textAlign='center';
+  ctx.fillText('ASIAN',0,-60); ctx.fillText('PAINTS',0,-50);
+  ctx.fillStyle='#c9c9ce'; ctx.beginPath(); ctx.ellipse(0,-96,32,9,0,0,6.2832); ctx.fill();
+  ctx.fillStyle=c; ctx.beginPath(); ctx.ellipse(0,-97,25,6,0,0,6.2832); ctx.fill();
+  // drips
+  ctx.fillStyle=c;
+  for(let i=-2;i<=2;i++){ const h=10+((i*13+Math.floor(o.wob*17))%16);
+    ctx.fillRect(i*12-2,-8,4,h*.5); }
+}
+function drawHoarding(){
+  shadow(10,.18);
+  ctx.fillStyle='#8d8d93'; ctx.fillRect(-52,-152,7,152); ctx.fillRect(45,-152,7,152);
+  ctx.fillStyle='#f6f2e8'; ctx.fillRect(-54,-150,108,86);
+  const stripes=['#ff5e1a','#ffc83d','#2ad1be','#2f7ad0','#e8206c'];
+  for(let i=0;i<5;i++){ ctx.fillStyle=stripes[i]; ctx.fillRect(-54,-150+i*17.2,16,17.2); }
+  ctx.fillStyle='#17120e'; ctx.font='900 12px Trebuchet MS'; ctx.textAlign='center';
+  ctx.fillText('ASIAN PAINTS',9,-130);
+  ctx.fillStyle='#c2452f'; ctx.font='bold 8.4px Trebuchet MS';
+  ctx.fillText('HAR GHAR KUCHH KEHTA HAI',9,-116);
+  ctx.fillStyle='#17a398'; ctx.fillRect(-36,-110,90,20);
+  ctx.fillStyle='#fff'; ctx.font='bold 9px Trebuchet MS';
+  ctx.fillText('ft. HARSHINI · IT',9,-96);
+  ctx.fillStyle='#1f6b4a'; ctx.fillRect(-54,-88,108,24);
+  ctx.fillStyle='#fff'; ctx.font='bold 9px Trebuchet MS'; ctx.fillText('SLIDE UNDER!',0,-72);
+}
+/* ---- route 3 : AI & DS props ---- */
+function drawRobot(o){
+  const b=Math.sin(game.t*3+o.wob)*2.5; shadow(40,.3);
+  ctx.fillStyle='#45506b'; ctx.fillRect(-26,-18,10,18); ctx.fillRect(16,-18,10,18);
+  ctx.fillStyle='#8f9bb5'; ctx.fillRect(-30,-80+b,60,62);
+  ctx.fillStyle='#5c6a8a'; ctx.fillRect(-30,-80+b,60,10);
+  ctx.fillStyle='#1b2030'; ctx.fillRect(-22,-66+b,44,26);
+  const on=Math.floor(game.t*4)%2===0;
+  ctx.fillStyle=on?'#4af0a0':'#1f6b4a';
+  ctx.fillRect(-18,-62+b,8,6); ctx.fillRect(-6,-62+b,8,6); ctx.fillRect(6,-62+b,8,6);
+  ctx.fillStyle='#ffd34d'; ctx.fillRect(-18,-52+b,36,4);
+  ctx.fillStyle='#b0bcd4'; ctx.fillRect(-36,-74+b,8,34); ctx.fillRect(28,-74+b,8,34);
+  ctx.fillStyle='#8f9bb5'; ctx.fillRect(-20,-104+b,40,26);
+  ctx.fillStyle='#1b2030'; ctx.fillRect(-15,-99+b,30,15);
+  ctx.fillStyle='#7a4fd6'; ctx.beginPath(); ctx.arc(-7,-92+b,4,0,6.2832); ctx.arc(7,-92+b,4,0,6.2832); ctx.fill();
+  ctx.strokeStyle='#b0bcd4'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(0,-104+b); ctx.lineTo(0,-114+b); ctx.stroke();
+  ctx.fillStyle='#ff4f74'; ctx.beginPath(); ctx.arc(0,-117+b,3.4,0,6.2832); ctx.fill();
+  ctx.fillStyle='#fff'; ctx.font='bold 7px Trebuchet MS'; ctx.textAlign='center'; ctx.fillText('AI & DS',0,-56+b);
+}
+function drawServerCart(){
+  shadow(44,.3);
+  ctx.fillStyle='#2b3040'; ctx.fillRect(-32,-120,64,108);
+  ctx.fillStyle='#1b1f2c'; ctx.fillRect(-27,-114,54,96);
+  for(let r=0;r<6;r++){
+    ctx.fillStyle='#3a4258'; ctx.fillRect(-25,-111+r*16,50,13);
+    const on=((r+Math.floor(game.t*5))%5)<3;
+    ctx.fillStyle=on?'#4af0a0':'#1f6b4a'; ctx.fillRect(-22,-108+r*16,5,5);
+    ctx.fillStyle='#ffd34d'; ctx.fillRect(-14,-108+r*16,5,5);
+    ctx.fillStyle='#2f9ad0'; ctx.fillRect(-6,-108+r*16,5,5);
+  }
+  ctx.strokeStyle='#6a7488'; ctx.lineWidth=3;
+  ctx.beginPath(); ctx.moveTo(32,-118); ctx.lineTo(46,-118); ctx.lineTo(46,-70); ctx.stroke();
+  ctx.fillStyle='#1d1d20';
+  for(const x of [-22,22]){ ctx.beginPath(); ctx.arc(x,-6,7,0,6.2832); ctx.fill(); }
+  ctx.fillStyle='#7a4fd6'; ctx.fillRect(-32,-134,64,13);
+  ctx.fillStyle='#fff'; ctx.font='bold 8px Trebuchet MS'; ctx.textAlign='center'; ctx.fillText('GPU RACK',0,-124.5);
+}
+function drawDrone(o){
+  const hov=Math.sin(game.t*5+o.wob)*4;
+  ctx.strokeStyle='rgba(120,140,180,.35)'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-92+hov); ctx.stroke();
+  ctx.save(); ctx.translate(0,-104+hov);
+  ctx.fillStyle='#2b3040'; ctx.fillRect(-26,-10,52,20);
+  ctx.fillStyle='#45506b'; ctx.fillRect(-42,-4,84,7);
+  for(const x of [-42,42]){
+    ctx.fillStyle='#1b1f2c'; ctx.beginPath(); ctx.arc(x,0,5,0,6.2832); ctx.fill();
+    ctx.strokeStyle='rgba(200,215,255,.55)'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.ellipse(x,-4,18,4,game.t*20%6.28,0,6.2832); ctx.stroke();
+  }
+  ctx.fillStyle='#7a4fd6'; ctx.beginPath(); ctx.arc(0,10,7,0,6.2832); ctx.fill();
+  ctx.fillStyle='#ff4f74'; ctx.beginPath(); ctx.arc(0,10,3,0,6.2832); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle='#17120e'; ctx.fillRect(-52,-84+hov,104,22);
+  ctx.fillStyle='#4af0a0'; ctx.font='bold 9px Trebuchet MS'; ctx.textAlign='center';
+  ctx.fillText('DRONE TEST ZONE',0,-75+hov);
+  ctx.fillStyle='#ffd34d'; ctx.font='bold 8px Trebuchet MS'; ctx.fillText('SLIDE UNDER!',0,-66+hov);
+}
 const OB_FN={auto:drawAuto,bus:drawBus,van:drawVan,bikes:drawBikes,students:drawStudentsOb,
   teacart:drawTeacart,cow:drawCow,cone:drawCone,bench:drawBench,dustbin:drawDustbin,bump:drawBump,
-  banner:drawBanner,barpole:drawBarpole};
+  banner:drawBanner,barpole:drawBarpole,
+  paintbucket:drawPaintBucket,paintdrum:drawPaintDrum,hoarding:drawHoarding,
+  robot:drawRobot,servercart:drawServerCart,drone:drawDrone};
 
 /* ====================== PICKUPS ====================== */
 function drawCoin(p){
@@ -1677,7 +2171,7 @@ function drawPower(p){
   ctx.restore();
 }
 
-/* ====================== RUNNING CHARACTERS ====================== */
+/* ====================== BIREETHIVE (running) ====================== */
 function drawBireethive(){
   const rolling=game.roll>0, air=!game.grounded, t=game.runT;
   const sw=Math.sin(t), sw2=Math.sin(t+Math.PI);
@@ -1719,7 +2213,6 @@ function drawBireethive(){
     ctx.beginPath(); ctx.moveTo(-12,-66+bounce*.6); ctx.quadraticCurveTo(-18-sw2*8,-56,-14-sw2*15,-44); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(12,-66+bounce*.6); ctx.quadraticCurveTo(18-sw*8,-56,14-sw*15,-44); ctx.stroke();
   }
-  // the rose he is carrying the whole way
   const rx=air?28:14-sw*15, ry=air?-86:-44;
   ctx.save(); ctx.translate(rx,ry); ctx.rotate(-.5+Math.sin(t)*.1);
   ctx.strokeStyle='#2f7a3e'; ctx.lineWidth=2.4;
@@ -1758,13 +2251,15 @@ function drawBireethive(){
     ctx.restore();
   }
 }
-function drawJanani(){
-  const j=game.jan, t=j.runT;
+
+/* ====================== THE GIRL (running, parameterised) ====================== */
+function drawGirlRun(){
+  const j=game.jan, cfg=girl(), t=j.runT;
   const sw=Math.sin(t), sw2=Math.sin(t+Math.PI);
   const bounce=j.grounded?Math.abs(Math.sin(t))*3.6:0;
   const glance=j.glance, air=!j.grounded;
   ctx.save();
-  const skinD='#a2673d', topA='#e8206c', topB='#b9104f', pant='#f6e7c8';
+  const skinD='#a2673d', topA=cfg.kurta[0], topB=cfg.kurta[1], pant='#f6e7c8';
   ctx.strokeStyle=pant; ctx.lineWidth=10; ctx.lineCap='round';
   if(air){
     ctx.beginPath(); ctx.moveTo(-4,-32); ctx.quadraticCurveTo(-16,-20,-19,-5); ctx.stroke();
@@ -1779,14 +2274,15 @@ function drawJanani(){
   ctx.beginPath(); ctx.ellipse(f1x,f1y,7,3.8,0,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.ellipse(f2x,f2y,7,3.8,0,0,6.2832); ctx.fill();
   ctx.save();
-  ctx.fillStyle='rgba(255,190,70,.85)';
+  ctx.fillStyle=cfg.dupatta;
   ctx.beginPath(); ctx.moveTo(-10,-62+bounce*.4);
   ctx.quadraticCurveTo(-40-Math.sin(t*1.3)*10,-58,-54-Math.sin(t*1.1)*12,-30+Math.sin(t*1.7)*8);
   ctx.quadraticCurveTo(-34,-44,-8,-44+bounce*.3); ctx.closePath(); ctx.fill();
-  ctx.fillStyle='rgba(255,160,40,.5)';
+  ctx.globalAlpha=.6;
   ctx.beginPath(); ctx.moveTo(-10,-58+bounce*.4);
   ctx.quadraticCurveTo(-34-Math.sin(t*1.5+1)*9,-50,-44-Math.sin(t*1.2+1)*10,-22+Math.sin(t*1.5)*7);
   ctx.quadraticCurveTo(-26,-38,-8,-42+bounce*.3); ctx.closePath(); ctx.fill();
+  ctx.globalAlpha=1;
   ctx.restore();
   const g=ctx.createLinearGradient(-14,0,14,0);
   g.addColorStop(0,topB); g.addColorStop(.45,topA); g.addColorStop(1,topB);
@@ -1804,22 +2300,39 @@ function drawJanani(){
     ctx.beginPath(); ctx.moveTo(11,-64+bounce*.6); ctx.quadraticCurveTo(17-sw*8,-54,13-sw*14,-42); ctx.stroke();
   }
   const hy=-82+bounce*.7;
+  /* hair */
   ctx.save();
-  ctx.strokeStyle='#120d0a'; ctx.lineWidth=7.4; ctx.lineCap='round';
-  const bs=Math.sin(t*0.9)*8;
-  ctx.beginPath(); ctx.moveTo(-4,hy+4); ctx.quadraticCurveTo(-20-bs,hy+22,-16-bs*1.3,hy+44); ctx.stroke();
-  ctx.fillStyle='#120d0a'; ctx.beginPath(); ctx.ellipse(-16-bs*1.3,hy+46,4.2,5.4,0,0,6.2832); ctx.fill();
-  ctx.fillStyle='#fffdf4';
-  for(let i=0;i<5;i++){
-    const u=i/4, px=lerp(-4,-16-bs*1.3,u), py=lerp(hy+6,hy+44,u);
-    ctx.beginPath(); ctx.arc(px-6*u-bs*u,py,2.9,0,6.2832); ctx.fill();
+  if(cfg.hair==='braid'){
+    ctx.strokeStyle='#120d0a'; ctx.lineWidth=7.4; ctx.lineCap='round';
+    const bs=Math.sin(t*0.9)*8;
+    ctx.beginPath(); ctx.moveTo(-4,hy+4); ctx.quadraticCurveTo(-20-bs,hy+22,-16-bs*1.3,hy+44); ctx.stroke();
+    ctx.fillStyle='#120d0a'; ctx.beginPath(); ctx.ellipse(-16-bs*1.3,hy+46,4.2,5.4,0,0,6.2832); ctx.fill();
+    ctx.fillStyle='#fffdf4';
+    for(let i=0;i<5;i++){ const u=i/4, px=lerp(-4,-16-bs*1.3,u), py=lerp(hy+6,hy+44,u);
+      ctx.beginPath(); ctx.arc(px-6*u-bs*u,py,2.9,0,6.2832); ctx.fill(); }
+  } else if(cfg.hair==='wavy'){
+    ctx.fillStyle='#2a1a12';
+    for(let i=0;i<4;i++){ const u=i/3, yy=hy+2+u*26, xx=-8-u*16-Math.sin(t*1.2+i)*5;
+      ctx.beginPath(); ctx.ellipse(xx,yy,13-u*3,9,-.4,0,6.2832); ctx.fill(); }
+    ctx.fillStyle='#c2452f'; ctx.beginPath(); ctx.arc(-6,hy-9,3,0,6.2832); ctx.fill();
+  } else {
+    ctx.strokeStyle='#1a1410'; ctx.lineWidth=9; ctx.lineCap='round';
+    const ps=Math.sin(t*1.1)*9;
+    ctx.beginPath(); ctx.moveTo(-6,hy-2); ctx.quadraticCurveTo(-24-ps,hy+6,-28-ps*1.2,hy+26); ctx.stroke();
+    ctx.fillStyle='#7a4fd6'; ctx.beginPath(); ctx.arc(-9,hy-3,4,0,6.2832); ctx.fill();
   }
   ctx.restore();
   ctx.save(); ctx.translate(0,hy); ctx.rotate(-glance*0.22);
   ctx.fillStyle='#b87a4e'; ctx.beginPath(); ctx.ellipse(0,0,12.2,13.2,0,0,6.2832); ctx.fill();
-  ctx.fillStyle='#120d0a';
+  ctx.fillStyle=cfg.hair==='wavy'?'#2a1a12':'#120d0a';
   ctx.beginPath(); ctx.arc(0,-2.6,12.6,Math.PI*1.0,Math.PI*2.06); ctx.fill();
   ctx.beginPath(); ctx.ellipse(0,-5,12.6,9,0,0,6.2832); ctx.fill();
+  if(cfg.prop==='headset'){
+    ctx.strokeStyle='#7a4fd6'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.arc(0,-6,13.5,Math.PI*1.1,Math.PI*1.95); ctx.stroke();
+    ctx.fillStyle='#5631a8'; ctx.beginPath(); ctx.ellipse(-12,0,4.4,6,0,0,6.2832); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(12,0,4.4,6,0,0,6.2832); ctx.fill();
+  }
   if(glance>0.08){
     ctx.globalAlpha=Math.min(1,glance*1.5);
     ctx.fillStyle='#fff';
@@ -1839,6 +2352,22 @@ function drawJanani(){
   ctx.fillStyle='#d61e4e'; ctx.beginPath(); ctx.arc(lerp(-1,2.4,glance),-5.4,1.7,0,6.2832); ctx.fill();
   ctx.fillStyle='#ffd34d'; ctx.beginPath(); ctx.arc(-8.6,2.4,2.0,0,6.2832); ctx.fill();
   ctx.restore();
+  /* the influencer phone — Harshini films herself while escaping */
+  if(cfg.prop==='phone'){
+    const px=13-sw*14, py=-42;
+    ctx.save(); ctx.translate(px+8,py-26); ctx.rotate(.25+Math.sin(t)*.06);
+    ctx.fillStyle='#1b1f2c'; ctx.fillRect(-7,-13,14,26);
+    ctx.fillStyle='#8fd8ff'; ctx.fillRect(-5.6,-11,11.2,22);
+    ctx.fillStyle='#e8206c'; ctx.fillRect(-5.6,-11,11.2,5);
+    ctx.fillStyle='#fff'; ctx.font='bold 4px Trebuchet MS'; ctx.textAlign='center'; ctx.fillText('LIVE',0,-7.2);
+    const rec=Math.floor(game.t*2)%2===0;
+    if(rec){ ctx.fillStyle='#ff2b4a'; ctx.beginPath(); ctx.arc(0,13.5,2,0,6.2832); ctx.fill(); }
+    ctx.restore();
+    if(Math.random()<.04){
+      ctx.fillStyle='rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.arc(px+8,py-26,22,0,6.2832); ctx.fill();
+    }
+  }
   ctx.restore();
 }
 
@@ -1892,17 +2421,15 @@ function drawPetals(){
   ctx.globalAlpha=1;
 }
 
-/* ====================== JANANI'S HOUSE (interior) ====================== */
+/* ====================== HOUSE INTERIOR ====================== */
 function drawHouseScene(){
-  const t=game.talkT;
-  // walls
+  const cfg=girl();
   const g=ctx.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,'#c9e2cf'); g.addColorStop(.62,'#a8cdb4'); g.addColorStop(1,'#7fae90');
+  g.addColorStop(0,cfg.wall[0]); g.addColorStop(.62,cfg.wall[1]); g.addColorStop(1,cfg.wall[1]);
   ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
   const floorY=H*0.68;
-  // red-oxide floor
   const fg=ctx.createLinearGradient(0,floorY,0,H);
-  fg.addColorStop(0,'#a8503a'); fg.addColorStop(1,'#7e3625');
+  fg.addColorStop(0,cfg.floor[0]); fg.addColorStop(1,cfg.floor[1]);
   ctx.fillStyle=fg; ctx.fillRect(0,floorY,W,H-floorY);
   ctx.strokeStyle='rgba(255,255,255,.12)'; ctx.lineWidth=1.4;
   for(let i=-10;i<=10;i++){
@@ -1913,8 +2440,8 @@ function drawHouseScene(){
     ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
   }
   ctx.fillStyle='#6b4a2a'; ctx.fillRect(0,floorY-10,W,10);
-  // window with grill
-  const wx=W*.16, wy=H*.20, ww=W*.19, wh=H*.26;
+  /* window */
+  const wx=W*.14, wy=H*.20, ww=W*.19, wh=H*.26;
   ctx.fillStyle='#5a7f94'; ctx.fillRect(wx,wy,ww,wh);
   const sg=ctx.createLinearGradient(wx,wy,wx,wy+wh);
   sg.addColorStop(0,'#ffd9a0'); sg.addColorStop(1,'#8fc4d8');
@@ -1923,8 +2450,8 @@ function drawHouseScene(){
   for(let i=1;i<4;i++){ ctx.beginPath(); ctx.moveTo(wx+i*ww/4,wy+6); ctx.lineTo(wx+i*ww/4,wy+wh-6); ctx.stroke(); }
   ctx.beginPath(); ctx.moveTo(wx+6,wy+wh/2); ctx.lineTo(wx+ww-6,wy+wh/2); ctx.stroke();
   ctx.fillStyle='#8a5a2a'; ctx.fillRect(wx-8,wy-10,ww+16,12);
-  // framed photo + garland
-  const px=W*.84, py=H*.19, pw=W*.11, ph=H*.17;
+  /* framed photo */
+  const px=W*.855, py=H*.19, pw=W*.11, ph=H*.17;
   ctx.fillStyle='#6b4a2a'; ctx.fillRect(px-pw/2-7,py-7,pw+14,ph+14);
   ctx.fillStyle='#f3e6c8'; ctx.fillRect(px-pw/2,py,pw,ph);
   ctx.fillStyle='#d9a93f'; ctx.beginPath(); ctx.arc(px,py+ph*.42,pw*.26,0,6.2832); ctx.fill();
@@ -1932,50 +2459,93 @@ function drawHouseScene(){
   ctx.lineTo(px-pw*.2,py+ph*.3); ctx.lineTo(px+pw*.2,py+ph*.3); ctx.closePath(); ctx.fill();
   ctx.strokeStyle='#ff9ec4'; ctx.lineWidth=5;
   ctx.beginPath(); ctx.moveTo(px-pw/2-7,py-4); ctx.quadraticCurveTo(px,py+ph*.22,px+pw/2+7,py-4); ctx.stroke();
-  // wall calendar
-  ctx.fillStyle='#fffdf4'; ctx.fillRect(W*.62,H*.16,W*.08,H*.13);
-  ctx.fillStyle='#c2452f'; ctx.fillRect(W*.62,H*.16,W*.08,H*.035);
-  ctx.fillStyle='#fff'; ctx.font='bold '+Math.round(H*.018)+'px Trebuchet MS'; ctx.textAlign='center';
-  ctx.fillText('2027',W*.66,H*.16+H*.026);
-  ctx.fillStyle='#333'; ctx.font='bold '+Math.round(H*.05)+'px Trebuchet MS';
-  ctx.fillText('30',W*.66,H*.16+H*.095);
-  // tube light
+  /* room personality */
+  ctx.textAlign='center';
+  if(cfg.id==='harshini'){
+    // ring light + shade cards + trophy
+    ctx.strokeStyle='#cfd3d6'; ctx.lineWidth=5;
+    ctx.beginPath(); ctx.moveTo(W*.36,floorY+H*.12); ctx.lineTo(W*.36,H*.26); ctx.stroke();
+    ctx.strokeStyle='#fffbe8'; ctx.lineWidth=9;
+    ctx.beginPath(); ctx.arc(W*.36,H*.22,H*.052,0,6.2832); ctx.stroke();
+    const rg=ctx.createRadialGradient(W*.36,H*.22,4,W*.36,H*.22,H*.3);
+    rg.addColorStop(0,'rgba(255,250,220,.3)'); rg.addColorStop(1,'rgba(255,250,220,0)');
+    ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(W*.36,H*.22,H*.3,0,6.2832); ctx.fill();
+    for(let i=0;i<6;i++){ ctx.fillStyle=PAINT_COLS[i];
+      ctx.fillRect(W*.60+i*W*.026,H*.15,W*.022,H*.075); }
+    ctx.fillStyle='#17120e'; ctx.font='bold '+Math.round(H*.016)+'px Trebuchet MS';
+    ctx.fillText('SHADE CARD',W*.665,H*.245);
+    ctx.fillStyle='#d4a017'; ctx.fillRect(W*.70,H*.40,W*.03,H*.05);
+    ctx.beginPath(); ctx.arc(W*.715,H*.395,H*.022,0,6.2832); ctx.fill();
+    ctx.fillStyle='#8a5a2a'; ctx.font='bold '+Math.round(H*.014)+'px Trebuchet MS';
+    ctx.fillText('1M VIEWS',W*.715,H*.47);
+  } else if(cfg.id==='janani'){
+    ctx.fillStyle='#fffdf4'; ctx.fillRect(W*.62,H*.16,W*.08,H*.13);
+    ctx.fillStyle='#c2452f'; ctx.fillRect(W*.62,H*.16,W*.08,H*.035);
+    ctx.fillStyle='#fff'; ctx.font='bold '+Math.round(H*.018)+'px Trebuchet MS';
+    ctx.fillText('2027',W*.66,H*.16+H*.026);
+    ctx.fillStyle='#333'; ctx.font='bold '+Math.round(H*.05)+'px Trebuchet MS';
+    ctx.fillText('30',W*.66,H*.16+H*.095);
+    // brother's cricket bat in the corner
+    ctx.save(); ctx.translate(W*.10,floorY+H*.06); ctx.rotate(-.28);
+    ctx.fillStyle='#d9b579'; ctx.fillRect(-7,-H*.16,14,H*.16);
+    ctx.fillStyle='#2b2b2b'; ctx.fillRect(-4,-H*.23,8,H*.07);
+    ctx.restore();
+    ctx.fillStyle='#5a3418'; ctx.font='bold '+Math.round(H*.014)+'px Trebuchet MS';
+    ctx.fillText("DHARAN ANNAN'S BAT",W*.115,floorY+H*.10);
+  } else {
+    // AI & DS : monitors with code
+    ctx.fillStyle='#2b3040'; ctx.fillRect(W*.58,H*.20,W*.28,H*.19);
+    ctx.fillStyle='#0d1018'; ctx.fillRect(W*.593,H*.212,W*.254,H*.166);
+    ctx.textAlign='left';
+    for(let i=0;i<7;i++){
+      ctx.fillStyle=['#4af0a0','#7a9bff','#ffd34d','#ff6fa5'][i%4];
+      ctx.fillRect(W*.60,H*.225+i*H*.021,W*.04+((i*37)%90)/900*W,H*.009);
+    }
+    ctx.fillStyle='#4af0a0'; ctx.font='bold '+Math.round(H*.015)+'px monospace';
+    ctx.fillText('model.fit(him, HATE)',W*.60,H*.372);
+    ctx.textAlign='center';
+    ctx.fillStyle='#45506b'; ctx.fillRect(W*.70,H*.39,W*.04,H*.03);
+    ctx.fillStyle='#7a4fd6'; ctx.fillRect(W*.10,H*.30,W*.05,H*.22);
+    ctx.fillStyle='#4af0a0';
+    for(let i=0;i<8;i++){ const on=((i+Math.floor(game.t*3))%4)<2;
+      ctx.fillStyle=on?'#4af0a0':'#1f6b4a'; ctx.fillRect(W*.108,H*.315+i*H*.025,W*.008,H*.012); }
+    ctx.fillStyle='#d6d2ef'; ctx.font='bold '+Math.round(H*.013)+'px Trebuchet MS';
+    ctx.fillText('GPU',W*.125,H*.545);
+  }
+  /* tube light */
   ctx.fillStyle='#e8f4ff'; ctx.fillRect(W*.34,H*.07,W*.2,H*.016);
   const lg=ctx.createRadialGradient(W*.44,H*.09,10,W*.44,H*.09,H*.42);
   lg.addColorStop(0,'rgba(255,255,230,.22)'); lg.addColorStop(1,'rgba(255,255,230,0)');
   ctx.fillStyle=lg; ctx.fillRect(0,0,W,H);
-  // plastic chair
-  ctx.save(); ctx.translate(W*.14,floorY+H*.09); const cs=H/700;
-  ctx.scale(cs,cs); ctx.fillStyle='#2f7a9a';
-  ctx.fillRect(-28,-18,56,10); ctx.fillRect(-28,-70,56,52);
-  ctx.fillStyle='#246281'; ctx.fillRect(-28,-70,56,8);
-  ctx.fillRect(-26,-8,7,22); ctx.fillRect(19,-8,7,22);
-  ctx.restore();
-  // doorway
+  /* doorway */
   ctx.fillStyle='#4a3522'; ctx.fillRect(W*.44,H*.14,W*.13,H*.54);
   ctx.fillStyle='#2b1d12'; ctx.fillRect(W*.45,H*.15,W*.11,H*.52);
   ctx.fillStyle='#8a6a3f'; ctx.fillRect(W*.44,H*.12,W*.13,H*.03);
-
-  void t;
 }
 
-function drawFaceBoy(hy,blush,happy){
+/* ====================== FRONT-FACING CHARACTERS ====================== */
+function drawFaceBoy(hy,blush,mood){
   ctx.fillStyle='#9a6238'; ctx.beginPath(); ctx.ellipse(0,hy,20,22,0,0,6.2832); ctx.fill();
   ctx.fillStyle='#17120e';
   ctx.beginPath(); ctx.arc(0,hy-5,20.6,Math.PI*1.02,Math.PI*2.0); ctx.fill();
   ctx.beginPath(); ctx.moveTo(-6,hy-22); ctx.lineTo(2,hy-36); ctx.lineTo(10,hy-21); ctx.closePath(); ctx.fill();
   ctx.fillStyle='#fff';
-  ctx.beginPath(); ctx.ellipse(-7.5,hy,5,4.3,0,0,6.2832); ctx.fill();
-  ctx.beginPath(); ctx.ellipse(7.5,hy,5,4.3,0,0,6.2832); ctx.fill();
+  const eh=mood==='shock'?6.2:4.3;
+  ctx.beginPath(); ctx.ellipse(-7.5,hy,5,eh,0,0,6.2832); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(7.5,hy,5,eh,0,0,6.2832); ctx.fill();
   ctx.fillStyle='#121212';
   ctx.beginPath(); ctx.arc(-7,hy+.6,2.4,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.arc(8,hy+.6,2.4,0,6.2832); ctx.fill();
   ctx.strokeStyle='#4a2a14'; ctx.lineWidth=2.2; ctx.lineCap='round';
-  if(happy){ ctx.beginPath(); ctx.arc(0,hy+6,7,.2,Math.PI-.2); ctx.stroke(); }
+  if(mood==='happy'){ ctx.beginPath(); ctx.arc(0,hy+6,7,.2,Math.PI-.2); ctx.stroke(); }
+  else if(mood==='shock'){ ctx.fillStyle='#4a2a14'; ctx.beginPath(); ctx.ellipse(0,hy+9,4,5,0,0,6.2832); ctx.fill(); }
+  else if(mood==='sad'){ ctx.beginPath(); ctx.arc(0,hy+14,7,Math.PI+.3,-.3); ctx.stroke(); }
   else { ctx.beginPath(); ctx.arc(0,hy+8,6,.35,Math.PI-.35); ctx.stroke(); }
   if(blush){ ctx.fillStyle='rgba(230,80,90,.35)';
     ctx.beginPath(); ctx.ellipse(-13,hy+6,5.5,3.6,0,0,6.2832); ctx.fill();
     ctx.beginPath(); ctx.ellipse(13,hy+6,5.5,3.6,0,0,6.2832); ctx.fill(); }
+  if(mood==='sad'){ ctx.fillStyle='rgba(120,190,255,.8)';
+    ctx.beginPath(); ctx.ellipse(-11,hy+8+Math.sin(game.t*3)*3,2,4,0,0,6.2832); ctx.fill(); }
 }
 function drawBoyFront(pose){
   const bob=Math.sin(game.t*2)*2;
@@ -1984,7 +2554,6 @@ function drawBoyFront(pose){
   ctx.fillStyle='rgba(20,10,6,.3)';
   ctx.beginPath(); ctx.ellipse(0,0,36,10,0,0,6.2832); ctx.fill();
   const kneeling=(pose==='kneel'||pose==='sad');
-  // legs
   ctx.strokeStyle='#9a6238'; ctx.lineWidth=13; ctx.lineCap='round';
   if(kneeling){
     ctx.beginPath(); ctx.moveTo(-10,-46); ctx.lineTo(-22,-14); ctx.lineTo(-2,-6); ctx.stroke();
@@ -1994,7 +2563,6 @@ function drawBoyFront(pose){
     ctx.beginPath(); ctx.moveTo(9,-46); ctx.lineTo(11,-4); ctx.stroke();
   }
   ctx.fillStyle='#24344f'; ctx.fillRect(-16,-62,32,20);
-  // torso
   const g=ctx.createLinearGradient(-20,0,20,0);
   g.addColorStop(0,'#15786a'); g.addColorStop(.45,'#1f9d8a'); g.addColorStop(1,'#15786a');
   ctx.fillStyle=g;
@@ -2003,11 +2571,13 @@ function drawBoyFront(pose){
   ctx.quadraticCurveTo(-23,-84,-19,-58+bob*.2); ctx.closePath(); ctx.fill();
   ctx.fillStyle='#ffd34d'; ctx.font='bold 12px Trebuchet MS'; ctx.textAlign='center';
   ctx.fillText('BRP',0,-80);
-  // arms
   ctx.strokeStyle='#85512c'; ctx.lineWidth=10;
   if(pose==='hug'||pose==='kiss'){
     ctx.beginPath(); ctx.moveTo(-17,-90); ctx.quadraticCurveTo(10,-96,46,-80); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(17,-90); ctx.quadraticCurveTo(34,-74,52,-64); ctx.stroke();
+  } else if(pose==='rival'){
+    ctx.beginPath(); ctx.moveTo(-17,-90); ctx.quadraticCurveTo(-34,-104,-30,-120); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(17,-90); ctx.quadraticCurveTo(34,-104,30,-120); ctx.stroke();
   } else if(kneeling){
     ctx.beginPath(); ctx.moveTo(-17,-90); ctx.quadraticCurveTo(-28,-70,-24,-52); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(17,-90); ctx.quadraticCurveTo(34,-78,40,-62); ctx.stroke();
@@ -2015,8 +2585,10 @@ function drawBoyFront(pose){
     ctx.beginPath(); ctx.moveTo(-17,-90); ctx.quadraticCurveTo(-26,-72,-22,-54); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(17,-90); ctx.quadraticCurveTo(26,-72,22,-54); ctx.stroke();
   }
-  drawFaceBoy(-112+bob*.4, pose==='hug'||pose==='kiss', pose!=='sad');
-  // the rose, offered when kneeling
+  const mood = (pose==='hug'||pose==='kiss'||pose==='leave') ? 'happy'
+             : pose==='rival' ? 'shock'
+             : pose==='sad' ? 'sad' : 'normal';
+  drawFaceBoy(-112+bob*.4, pose==='hug'||pose==='kiss'||pose==='leave', mood);
   if(kneeling||pose==='hug'||pose==='kiss'){
     const lift=(pose==='kneel'||pose==='sad')?Math.sin(game.t*2)*3:0;
     ctx.save(); ctx.translate(42,-66+lift); ctx.rotate(-.45);
@@ -2032,31 +2604,32 @@ function drawBoyFront(pose){
     ctx.fillStyle=gg; ctx.beginPath(); ctx.arc(0,-16,30,0,6.2832); ctx.fill();
     ctx.restore();
   }
+  if(pose==='rival'){
+    ctx.fillStyle='#fff'; ctx.font='900 22px Trebuchet MS'; ctx.textAlign='center';
+    ctx.fillText('!?', 0, -150+Math.sin(game.t*7)*3);
+  }
   ctx.restore();
 }
-function drawJananiFront(pose, mood){
+function drawGirlFront(cfg,pose,mood){
   const bob=Math.sin(game.t*2+1)*2;
   ctx.save();
   ctx.fillStyle='rgba(20,10,6,.3)';
   ctx.beginPath(); ctx.ellipse(0,0,34,9,0,0,6.2832); ctx.fill();
-  // churidar pants
   ctx.strokeStyle='#f6e7c8'; ctx.lineWidth=14; ctx.lineCap='round';
   ctx.beginPath(); ctx.moveTo(-8,-44); ctx.lineTo(-10,-5); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(8,-44); ctx.lineTo(10,-5); ctx.stroke();
   ctx.fillStyle='#8a3f6a';
   ctx.beginPath(); ctx.ellipse(-10,-3,9,4.4,0,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.ellipse(10,-3,9,4.4,0,0,6.2832); ctx.fill();
-  // dupatta behind
-  ctx.fillStyle='rgba(255,190,70,.85)';
+  ctx.fillStyle=cfg.dupatta;
   ctx.beginPath(); ctx.moveTo(-16,-92);
   ctx.quadraticCurveTo(-52-Math.sin(game.t)*5,-62,-40,-16);
   ctx.quadraticCurveTo(-26,-52,-12,-62); ctx.closePath(); ctx.fill();
   ctx.beginPath(); ctx.moveTo(16,-92);
   ctx.quadraticCurveTo(52+Math.sin(game.t+1)*5,-62,40,-16);
   ctx.quadraticCurveTo(26,-52,12,-62); ctx.closePath(); ctx.fill();
-  // kurta
   const g=ctx.createLinearGradient(-20,0,20,0);
-  g.addColorStop(0,'#b9104f'); g.addColorStop(.45,'#e8206c'); g.addColorStop(1,'#b9104f');
+  g.addColorStop(0,cfg.kurta[1]); g.addColorStop(.45,cfg.kurta[0]); g.addColorStop(1,cfg.kurta[1]);
   ctx.fillStyle=g;
   ctx.beginPath(); ctx.moveTo(-20,-44+bob*.2); ctx.lineTo(20,-44+bob*.2);
   ctx.quadraticCurveTo(20,-80,16,-94+bob*.4); ctx.lineTo(-16,-94+bob*.4);
@@ -2064,36 +2637,51 @@ function drawJananiFront(pose, mood){
   ctx.fillStyle='#ffd34d'; ctx.fillRect(-20,-50+bob*.2,40,4.6);
   ctx.fillStyle='rgba(255,255,255,.3)';
   for(let i=-2;i<=2;i++){ ctx.beginPath(); ctx.arc(i*7,-72+bob*.3,2,0,6.2832); ctx.fill(); }
-  // arms
   ctx.strokeStyle='#a2673d'; ctx.lineWidth=9;
   if(pose==='hug'||pose==='kiss'){
     ctx.beginPath(); ctx.moveTo(-16,-88); ctx.quadraticCurveTo(-42,-80,-56,-66); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(16,-88); ctx.quadraticCurveTo(-6,-96,-42,-84); ctx.stroke();
   } else if(mood==='angry'){
     ctx.beginPath(); ctx.moveTo(-16,-88); ctx.quadraticCurveTo(-30,-74,-18,-62); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(16,-88); ctx.quadraticCurveTo(30,-74,18,-62); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(16,-88); ctx.quadraticCurveTo(34,-96,44,-110); ctx.stroke();  // pointing away
   } else {
     ctx.beginPath(); ctx.moveTo(-16,-88); ctx.quadraticCurveTo(-26,-70,-22,-52); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(16,-88); ctx.quadraticCurveTo(26,-70,22,-52); ctx.stroke();
   }
   ctx.strokeStyle='#ffd34d'; ctx.lineWidth=2.4;
   ctx.beginPath(); ctx.arc(-21,-54,4,0,6.2832); ctx.stroke();
-  ctx.beginPath(); ctx.arc(21,-54,4,0,6.2832); ctx.stroke();
-  // braid over the shoulder
   const hy=-112+bob*.4;
-  ctx.strokeStyle='#120d0a'; ctx.lineWidth=9; ctx.lineCap='round';
-  ctx.beginPath(); ctx.moveTo(14,hy+10); ctx.quadraticCurveTo(26,hy+40,20,hy+70); ctx.stroke();
-  ctx.fillStyle='#fffdf4';
-  for(let i=0;i<5;i++){ const u=i/4;
-    ctx.beginPath(); ctx.arc(lerp(16,21,u)+Math.sin(u*3)*3,lerp(hy+16,hy+66,u),3.1,0,6.2832); ctx.fill(); }
-  // head
+  /* hair by style */
+  if(cfg.hair==='braid'){
+    ctx.strokeStyle='#120d0a'; ctx.lineWidth=9; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(14,hy+10); ctx.quadraticCurveTo(26,hy+40,20,hy+70); ctx.stroke();
+    ctx.fillStyle='#fffdf4';
+    for(let i=0;i<5;i++){ const u=i/4;
+      ctx.beginPath(); ctx.arc(lerp(16,21,u)+Math.sin(u*3)*3,lerp(hy+16,hy+66,u),3.1,0,6.2832); ctx.fill(); }
+  } else if(cfg.hair==='wavy'){
+    ctx.fillStyle='#2a1a12';
+    for(const s of [-1,1]) for(let i=0;i<4;i++){
+      const u=i/3;
+      ctx.beginPath(); ctx.ellipse(s*(17+u*4),hy+4+u*28,9-u*2,11,s*.3,0,6.2832); ctx.fill();
+    }
+  } else {
+    ctx.strokeStyle='#1a1410'; ctx.lineWidth=10; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(0,hy-14); ctx.quadraticCurveTo(26,hy-6,24,hy+34); ctx.stroke();
+    ctx.fillStyle='#7a4fd6'; ctx.beginPath(); ctx.arc(12,hy-14,5,0,6.2832); ctx.fill();
+  }
   ctx.fillStyle='#b87a4e'; ctx.beginPath(); ctx.ellipse(0,hy,19,21,0,0,6.2832); ctx.fill();
-  ctx.fillStyle='#120d0a';
+  ctx.fillStyle=cfg.hair==='wavy'?'#2a1a12':'#120d0a';
   ctx.beginPath(); ctx.arc(0,hy-4,19.6,Math.PI*1.0,Math.PI*2.0); ctx.fill();
   ctx.beginPath(); ctx.ellipse(0,hy-9,19.6,13,0,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.ellipse(-16,hy+2,6,11,.25,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.ellipse(16,hy+2,6,11,-.25,0,6.2832); ctx.fill();
-  // eyes
+  if(cfg.prop==='headset'){
+    ctx.strokeStyle='#7a4fd6'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.arc(0,hy-6,21,Math.PI*1.08,Math.PI*1.92); ctx.stroke();
+    ctx.fillStyle='#5631a8';
+    ctx.beginPath(); ctx.ellipse(-20,hy,5.4,8,0,0,6.2832); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(20,hy,5.4,8,0,0,6.2832); ctx.fill();
+  }
   ctx.fillStyle='#fff';
   ctx.beginPath(); ctx.ellipse(-7,hy+1,5.2,(mood==='happy'?3.2:4.4),0,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.ellipse(7,hy+1,5.2,(mood==='happy'?3.2:4.4),0,0,6.2832); ctx.fill();
@@ -2103,7 +2691,6 @@ function drawJananiFront(pose, mood){
   ctx.fillStyle='#fff';
   ctx.beginPath(); ctx.arc(-7.6,hy+.3,1,0,6.2832); ctx.fill();
   ctx.beginPath(); ctx.arc(6.4,hy+.3,1,0,6.2832); ctx.fill();
-  // eyebrows
   ctx.strokeStyle='#17110c'; ctx.lineWidth=2.2; ctx.lineCap='round';
   if(mood==='angry'){
     ctx.beginPath(); ctx.moveTo(-12,hy-7); ctx.lineTo(-3,hy-4); ctx.stroke();
@@ -2112,13 +2699,10 @@ function drawJananiFront(pose, mood){
     ctx.beginPath(); ctx.moveTo(-12,hy-6); ctx.lineTo(-3,hy-7.5); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(12,hy-6); ctx.lineTo(3,hy-7.5); ctx.stroke();
   }
-  // mouth
   ctx.strokeStyle='#8a2a3a'; ctx.lineWidth=2.2;
-  if(mood==='happy'){ ctx.beginPath(); ctx.arc(0,hy+6,6.5,.18,Math.PI-.18); ctx.stroke();
-    ctx.fillStyle='#8a2a3a'; ctx.beginPath(); ctx.arc(0,hy+6,6.5,.18,Math.PI-.18); ctx.fill(); }
+  if(mood==='happy'){ ctx.fillStyle='#8a2a3a'; ctx.beginPath(); ctx.arc(0,hy+6,6.5,.18,Math.PI-.18); ctx.fill(); }
   else if(mood==='angry'){ ctx.beginPath(); ctx.moveTo(-5,hy+10); ctx.lineTo(5,hy+8.6); ctx.stroke(); }
   else { ctx.beginPath(); ctx.arc(0,hy+5,5,.3,Math.PI-.3); ctx.stroke(); }
-  // bindi + jhumka
   ctx.fillStyle='#d61e4e'; ctx.beginPath(); ctx.arc(0,hy-10,2.4,0,6.2832); ctx.fill();
   ctx.fillStyle='#ffd34d';
   ctx.beginPath(); ctx.arc(-18,hy+7,3,0,6.2832); ctx.fill();
@@ -2128,28 +2712,101 @@ function drawJananiFront(pose, mood){
     ctx.beginPath(); ctx.ellipse(-13,hy+6,6,4,0,0,6.2832); ctx.fill();
     ctx.beginPath(); ctx.ellipse(13,hy+6,6,4,0,0,6.2832); ctx.fill();
   }
+  /* Harshini keeps filming even indoors */
+  if(cfg.prop==='phone'&&pose!=='hug'&&pose!=='kiss'){
+    ctx.save(); ctx.translate(-30,-96); ctx.rotate(-.3);
+    ctx.fillStyle='#1b1f2c'; ctx.fillRect(-9,-16,18,32);
+    ctx.fillStyle='#8fd8ff'; ctx.fillRect(-7,-14,14,28);
+    ctx.fillStyle='#e8206c'; ctx.fillRect(-7,-14,14,6);
+    ctx.fillStyle='#fff'; ctx.font='bold 5px Trebuchet MS'; ctx.textAlign='center'; ctx.fillText('LIVE',0,-9.5);
+    ctx.restore();
+  }
+  ctx.restore();
+}
+/* the rival boyfriend — appears only in the AI & DS ending */
+function drawRivalFront(){
+  const bob=Math.sin(game.t*2+2)*2;
+  ctx.save();
+  ctx.fillStyle='rgba(20,10,6,.3)';
+  ctx.beginPath(); ctx.ellipse(0,0,36,10,0,0,6.2832); ctx.fill();
+  ctx.strokeStyle='#8a5a33'; ctx.lineWidth=13; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(-9,-48); ctx.lineTo(-11,-4); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(9,-48); ctx.lineTo(11,-4); ctx.stroke();
+  ctx.fillStyle='#1b2030'; ctx.fillRect(-17,-64,34,22);
+  const g=ctx.createLinearGradient(-20,0,20,0);
+  g.addColorStop(0,'#2b2f44'); g.addColorStop(.45,'#444a66'); g.addColorStop(1,'#2b2f44');
+  ctx.fillStyle=g;
+  ctx.beginPath(); ctx.moveTo(-20,-60+bob*.2); ctx.lineTo(20,-60+bob*.2);
+  ctx.quadraticCurveTo(25,-88,19,-100+bob*.4); ctx.lineTo(-19,-100+bob*.4);
+  ctx.quadraticCurveTo(-25,-88,-20,-60+bob*.2); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#4af0a0'; ctx.font='bold 10px Trebuchet MS'; ctx.textAlign='center';
+  ctx.fillText('MECH',0,-82);
+  ctx.strokeStyle='#8a5a33'; ctx.lineWidth=10;
+  ctx.beginPath(); ctx.moveTo(-18,-94); ctx.quadraticCurveTo(-44,-86,-58,-72); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(18,-94); ctx.quadraticCurveTo(28,-76,24,-58); ctx.stroke();
+  const hy=-118+bob*.4;
+  ctx.fillStyle='#8a5a33'; ctx.beginPath(); ctx.ellipse(0,hy,20,22,0,0,6.2832); ctx.fill();
+  ctx.fillStyle='#17120e';
+  ctx.beginPath(); ctx.arc(0,hy-5,20.6,Math.PI*1.02,Math.PI*2.0); ctx.fill();
+  ctx.fillStyle='#1b1f2c'; ctx.fillRect(-19,hy-3,38,9);
+  ctx.fillStyle='#2f9ad0'; ctx.fillRect(-17,hy-1.5,15,6); ctx.fillRect(2,hy-1.5,15,6);
+  ctx.strokeStyle='#4a2a14'; ctx.lineWidth=2.4; ctx.lineCap='round';
+  ctx.beginPath(); ctx.arc(0,hy+8,6,.3,Math.PI-.3); ctx.stroke();
+  ctx.fillStyle='#17120e'; ctx.fillRect(-7,hy+15,14,4);
   ctx.restore();
 }
 
 function drawTalkScene(){
   drawHouseScene();
-  const base=H*0.80, sc=(H/700)*1.25;
+  const cfg=girl();
+  const base=H*0.80, sc=(H/700)*1.2;
   const pose=endPose();
   const together=(pose==='hug'||pose==='kiss');
-  const mood = state===S.END
-      ? (game.isDharan ? (endStep>=1?'happy':'normal') : (endStep>=1?'normal':'angry'))
-      : (dlgStep>=3?'normal':'angry');
+  let mood='normal';
+  if(state===S.END){
+    if(endKind==='accept') mood = endStep>=1?'happy':'normal';
+    else if(cfg.id==='aiswarya') mood = endStep>=1?'angry':'normal';
+    else mood = endStep>=1?'normal':'angry';
+  } else mood = dlgStep>=3?'normal':'angry';
+
+  if(pose==='rival'){
+    /* Aiswarya + her boyfriend on the right, shocked Bireethive on the left */
+    ctx.save(); ctx.translate(W*.22, base); ctx.scale(sc,sc); drawBoyFront('rival'); ctx.restore();
+    ctx.save(); ctx.translate(W*.64, base); ctx.scale(sc,sc); drawRivalFront(); ctx.restore();
+    ctx.save(); ctx.translate(W*.78, base); ctx.scale(-sc,sc); drawGirlFront(cfg,'kiss','happy'); ctx.restore();
+    ctx.fillStyle='#ff3f71';
+    for(let i=0;i<5;i++){ const a=game.t*2+i*1.25, r=48+Math.sin(game.t*3+i)*14;
+      heartPath(W*.71+Math.cos(a)*r, base-H*.34+Math.sin(a)*r*.5, 9); ctx.fill(); }
+    ctx.fillStyle='#fff'; ctx.font='900 '+Math.round(H*.034)+'px Trebuchet MS'; ctx.textAlign='center';
+    ctx.fillText('💋', W*.71, base-H*.30);
+    ctx.fillStyle='rgba(255,90,90,.92)'; ctx.font='900 '+Math.round(H*.026)+'px Trebuchet MS';
+    ctx.fillText('PORIKKI, NOT POOKIE 😤', W*.5, base-H*.50);
+    drawPetals(); return;
+  }
+  if(pose==='leave'){
+    /* he walks off with Harshini and Janani; AI & DS couple watches from the back */
+    ctx.save(); ctx.translate(W*.80, base-H*.06); ctx.scale(sc*.62,sc*.62);
+    drawRivalFront(); ctx.restore();
+    ctx.save(); ctx.translate(W*.90, base-H*.06); ctx.scale(-sc*.62,sc*.62);
+    drawGirlFront(GIRLS[2],'stand','angry'); ctx.restore();
+    ctx.save(); ctx.translate(W*.22, base); ctx.scale(sc,sc);
+    drawGirlFront(GIRLS[0],'stand','happy'); ctx.restore();
+    ctx.save(); ctx.translate(W*.40, base); ctx.scale(sc,sc); drawBoyFront('leave'); ctx.restore();
+    ctx.save(); ctx.translate(W*.58, base); ctx.scale(-sc,sc);
+    drawGirlFront(GIRLS[1],'stand','happy'); ctx.restore();
+    ctx.fillStyle='rgba(255,80,130,.9)';
+    for(let i=0;i<9;i++){ const a=game.t*1.6+i*0.7, r=80+Math.sin(game.t*3+i)*26;
+      heartPath(W*.40+Math.cos(a)*r, base-H*.34+Math.sin(a)*r*.5, 9+Math.sin(game.t*4+i)*2.5); ctx.fill(); }
+    ctx.fillStyle='#fff'; ctx.font='900 '+Math.round(H*.028)+'px Trebuchet MS'; ctx.textAlign='center';
+    ctx.fillText('2 WON · 1 LOST · STILL A LEGEND 😎', W*.5, base-H*.52);
+    drawPetals(); return;
+  }
+
   const sep = together ? 48 : 150;
+  ctx.save(); ctx.translate(W*.5-sep*sc*0.6, base); ctx.scale(sc,sc); drawBoyFront(pose); ctx.restore();
+  ctx.save(); ctx.translate(W*.5+sep*sc*0.6, base); ctx.scale(-sc,sc); drawGirlFront(cfg,pose,mood); ctx.restore();
 
-  // Bireethive (left)
-  ctx.save(); ctx.translate(W*.5-sep*sc*0.6, base); ctx.scale(sc,sc);
-  drawBoyFront(pose); ctx.restore();
-  // Janani (right)
-  ctx.save(); ctx.translate(W*.5+sep*sc*0.6, base); ctx.scale(-sc,sc);
-  drawJananiFront(pose, mood); ctx.restore();
-
-  // hearts / kiss / friendzone marks
-  if(game.isDharan && state===S.END && endStep>=3){
+  if(endKind==='accept'&&state===S.END&&endStep>=2){
     for(let i=0;i<7;i++){
       const a=game.t*1.8+i*0.9, r=70+Math.sin(game.t*3+i)*22;
       ctx.fillStyle='rgba(255,80,130,.85)';
@@ -2162,10 +2819,17 @@ function drawTalkScene(){
     ctx.fillStyle='#fff'; ctx.font='900 '+Math.round(H*.03)+'px Trebuchet MS'; ctx.textAlign='center';
     ctx.fillText('💋', W*.5+10, base-H*.30+8);
   }
-  if(!game.isDharan && state===S.END && endStep>=1){
+  if(endKind==='friendzone'&&state===S.END&&endStep>=1){
     ctx.fillStyle='rgba(120,170,255,.9)'; ctx.font='900 '+Math.round(H*.028)+'px Trebuchet MS';
     ctx.textAlign='center';
-    ctx.fillText('🫶  FRIEND ZONE  🫶', W*.5, base-H*.42);
+    ctx.fillText('🫶  FRIEND ZONE  🫶', W*.5, base-H*.44);
+  }
+  if(cfg.id==='harshini'&&endKind==='accept'&&state===S.END&&endStep>=1){
+    for(let i=0;i<5;i++){
+      ctx.fillStyle=PAINT_COLS[i];
+      const a=game.t*1.2+i*1.26, r=120+Math.sin(game.t*2+i)*20;
+      ctx.beginPath(); ctx.arc(W*.5+Math.cos(a)*r, base-H*.36+Math.sin(a)*r*.4, 9, 0, 6.2832); ctx.fill();
+    }
   }
   drawPetals();
 }
@@ -2201,7 +2865,7 @@ function render(){
       const sa=clamp(.3-j.py*.0022,.05,.3), ss=clamp(24-j.py*.07,11,24);
       ctx.fillStyle='rgba(18,14,8,'+sa+')';
       ctx.beginPath(); ctx.ellipse(0,0,ss,ss*.3,0,0,6.2832); ctx.fill();
-      ctx.translate(0,-j.py); drawJanani(); ctx.restore();
+      ctx.translate(0,-j.py); drawGirlRun(); ctx.restore();
     }
     else {
       const pr=proj(game.px,0,PLAYER_Z);
@@ -2233,7 +2897,6 @@ function render(){
   if(game.hitFlash>0){ ctx.fillStyle='rgba(255,60,40,'+(game.hitFlash*.32)+')'; ctx.fillRect(0,0,W,H); }
   if(game.chase>.3){ ctx.fillStyle='rgba(180,30,20,'+((game.chase-.3)*.2)+')'; ctx.fillRect(0,0,W,H); }
 
-  /* catch cutscene overlay text */
   if(state===S.CATCH){
     const t=game.catchT, a=clamp(t/0.4,0,1)*clamp((4.3-t)/0.5,0,1);
     ctx.globalAlpha=a; ctx.textAlign='center';
@@ -2242,7 +2905,7 @@ function render(){
     ctx.fillText(t<2.0?'30 SECONDS — HE CAUGHT HER!':'SHE RAN INSIDE… HE FOLLOWED', W*.5, H*.185);
     ctx.font='700 '+Math.round(H*.019)+'px Trebuchet MS, sans-serif';
     ctx.fillStyle='rgba(255,214,170,.95)';
-    ctx.fillText(t<2.0?"JANANI'S HOUSE · THANAKKANKULAM 625006":'NOW SAY IT PROPERLY, BIREETHIVE…', W*.5, H*.185+Math.round(H*.032));
+    ctx.fillText(t<2.0?girl().name+"'S HOUSE": 'NOW SAY IT PROPERLY, BIREETHIVE…', W*.5, H*.185+Math.round(H*.032));
     ctx.globalAlpha=1;
     const fade=clamp((t-3.5)/0.8,0,1);
     if(fade>0){ ctx.fillStyle='rgba(0,0,0,'+fade+')'; ctx.fillRect(0,0,W,H); }
@@ -2264,9 +2927,10 @@ function frame(now){
   update(dt); render();
   requestAnimationFrame(frame);
 }
-try{ game.best=parseInt(localStorage.getItem('janani_best')||'0',10)||0; }catch(e){ game.best=0; }
-resize(); computeTheme(); resetGame();
+try{ game.best=parseInt(localStorage.getItem('bireethive_best')||'0',10)||0; }catch(e){ game.best=0; }
+loadProgress(); buildRoutePicker();
+resize(); resetGame(); computeTheme();
 requestAnimationFrame(frame);
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a46b005e4e9c7f85',t:'MTc5MTM1NjEzOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
