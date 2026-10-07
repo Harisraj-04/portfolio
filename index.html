@@ -2108,3 +2108,165 @@ function drawJananiFront(pose, mood){
   if(mood==='angry'){
     ctx.beginPath(); ctx.moveTo(-12,hy-7); ctx.lineTo(-3,hy-4); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(12,hy-7); ctx.lineTo(3,hy-4); ctx.stroke();
+  } else {
+    ctx.beginPath(); ctx.moveTo(-12,hy-6); ctx.lineTo(-3,hy-7.5); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(12,hy-6); ctx.lineTo(3,hy-7.5); ctx.stroke();
+  }
+  // mouth
+  ctx.strokeStyle='#8a2a3a'; ctx.lineWidth=2.2;
+  if(mood==='happy'){ ctx.beginPath(); ctx.arc(0,hy+6,6.5,.18,Math.PI-.18); ctx.stroke();
+    ctx.fillStyle='#8a2a3a'; ctx.beginPath(); ctx.arc(0,hy+6,6.5,.18,Math.PI-.18); ctx.fill(); }
+  else if(mood==='angry'){ ctx.beginPath(); ctx.moveTo(-5,hy+10); ctx.lineTo(5,hy+8.6); ctx.stroke(); }
+  else { ctx.beginPath(); ctx.arc(0,hy+5,5,.3,Math.PI-.3); ctx.stroke(); }
+  // bindi + jhumka
+  ctx.fillStyle='#d61e4e'; ctx.beginPath(); ctx.arc(0,hy-10,2.4,0,6.2832); ctx.fill();
+  ctx.fillStyle='#ffd34d';
+  ctx.beginPath(); ctx.arc(-18,hy+7,3,0,6.2832); ctx.fill();
+  ctx.beginPath(); ctx.arc(18,hy+7,3,0,6.2832); ctx.fill();
+  if(mood==='happy'){
+    ctx.fillStyle='rgba(230,80,120,.35)';
+    ctx.beginPath(); ctx.ellipse(-13,hy+6,6,4,0,0,6.2832); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(13,hy+6,6,4,0,0,6.2832); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawTalkScene(){
+  drawHouseScene();
+  const base=H*0.80, sc=(H/700)*1.25;
+  const pose=endPose();
+  const together=(pose==='hug'||pose==='kiss');
+  const mood = state===S.END
+      ? (game.isDharan ? (endStep>=1?'happy':'normal') : (endStep>=1?'normal':'angry'))
+      : (dlgStep>=3?'normal':'angry');
+  const sep = together ? 48 : 150;
+
+  // Bireethive (left)
+  ctx.save(); ctx.translate(W*.5-sep*sc*0.6, base); ctx.scale(sc,sc);
+  drawBoyFront(pose); ctx.restore();
+  // Janani (right)
+  ctx.save(); ctx.translate(W*.5+sep*sc*0.6, base); ctx.scale(-sc,sc);
+  drawJananiFront(pose, mood); ctx.restore();
+
+  // hearts / kiss / friendzone marks
+  if(game.isDharan && state===S.END && endStep>=3){
+    for(let i=0;i<7;i++){
+      const a=game.t*1.8+i*0.9, r=70+Math.sin(game.t*3+i)*22;
+      ctx.fillStyle='rgba(255,80,130,.85)';
+      heartPath(W*.5+Math.cos(a)*r, base-H*.30+Math.sin(a)*r*.55, 8+Math.sin(game.t*4+i)*2.6); ctx.fill();
+    }
+  }
+  if(pose==='kiss'){
+    ctx.fillStyle='#ff3f71';
+    heartPath(W*.5+10, base-H*.30, 16+Math.sin(game.t*6)*3); ctx.fill();
+    ctx.fillStyle='#fff'; ctx.font='900 '+Math.round(H*.03)+'px Trebuchet MS'; ctx.textAlign='center';
+    ctx.fillText('💋', W*.5+10, base-H*.30+8);
+  }
+  if(!game.isDharan && state===S.END && endStep>=1){
+    ctx.fillStyle='rgba(120,170,255,.9)'; ctx.font='900 '+Math.round(H*.028)+'px Trebuchet MS';
+    ctx.textAlign='center';
+    ctx.fillText('🫶  FRIEND ZONE  🫶', W*.5, base-H*.42);
+  }
+  drawPetals();
+}
+
+/* ====================== MAIN RENDER ====================== */
+function render(){
+  if(state===S.TALK||state===S.END){ drawTalkScene(); return; }
+
+  ctx.save();
+  if(game.shake>0) ctx.translate(rnd(-game.shake,game.shake),rnd(-game.shake,game.shake));
+  drawSky(); drawHills(); drawRoad();
+
+  const list=[];
+  for(const s of game.scenery){ const z=s.z-game.dist+PLAYER_Z; if(z>40&&z<FAR_Z) list.push({z,k:0,o:s}); }
+  for(const o of game.objs){ const z=o.z-game.dist+PLAYER_Z; if(z>40&&z<FAR_Z) list.push({z,k:1,o}); }
+  for(const p of game.pickups){ const z=p.z-game.dist+PLAYER_Z; if(z>40&&z<FAR_Z) list.push({z,k:2,o:p}); }
+  const jz=PLAYER_Z+game.jan.lead;
+  if(jz<FAR_Z) list.push({z:jz,k:4,o:null});
+  list.push({z:PLAYER_Z,k:3,o:null});
+  list.sort((a,b)=>b.z-a.z);
+
+  let janScreen=null;
+  for(const it of list){
+    if(it.k===0){ const fn=SCENE_FN[it.o.type]; if(fn) sprite(it.o.x,it.z,fn,it.o); }
+    else if(it.k===1){ const fn=OB_FN[it.o.type]; if(fn) sprite(laneX(it.o.lane),it.z,fn,it.o); }
+    else if(it.k===2){ const p=it.o; p.yy=p.y+p.oy;
+      const fn=p.kind==='coin'?drawCoin:(GIFT_PTS[p.kind]?drawGift:drawPower);
+      sprite(laneX(p.lane)+p.ox,it.z,fn,p); }
+    else if(it.k===4){
+      const j=game.jan, pr=proj(j.x,0,it.z);
+      janScreen={x:pr.x,y:pr.y-120*pr.s};
+      ctx.save(); ctx.translate(pr.x,pr.y); ctx.scale(pr.s,pr.s);
+      const sa=clamp(.3-j.py*.0022,.05,.3), ss=clamp(24-j.py*.07,11,24);
+      ctx.fillStyle='rgba(18,14,8,'+sa+')';
+      ctx.beginPath(); ctx.ellipse(0,0,ss,ss*.3,0,0,6.2832); ctx.fill();
+      ctx.translate(0,-j.py); drawJanani(); ctx.restore();
+    }
+    else {
+      const pr=proj(game.px,0,PLAYER_Z);
+      ctx.save(); ctx.translate(pr.x,pr.y); ctx.scale(pr.s,pr.s);
+      const sa=clamp(.34-game.py*.0022,.06,.34), ss=clamp(26-game.py*.07,12,26);
+      ctx.fillStyle='rgba(18,14,8,'+sa+')';
+      ctx.beginPath(); ctx.ellipse(0,0,ss,ss*.3,0,0,6.2832); ctx.fill();
+      ctx.translate(0,-game.py);
+      if(game.inv>0&&Math.floor(game.t*18)%2===0) ctx.globalAlpha=.35;
+      drawBireethive(); ctx.globalAlpha=1; ctx.restore();
+    }
+  }
+
+  for(const f of game.fx){
+    const p=proj(f.x,f.y,f.z);
+    ctx.globalAlpha=clamp(f.life/f.max,0,1); ctx.fillStyle=f.col;
+    ctx.beginPath(); ctx.arc(p.x,p.y,f.r*p.s,0,6.2832); ctx.fill(); ctx.globalAlpha=1;
+  }
+  drawBull();
+
+  const hz=ctx.createLinearGradient(0,horizonY-30,0,horizonY+130);
+  hz.addColorStop(0,RGBA(theme.haze,.42)); hz.addColorStop(1,RGBA(theme.haze,0));
+  ctx.fillStyle=hz; ctx.fillRect(0,horizonY-30,W,160);
+  drawPetals();
+
+  const vg=ctx.createRadialGradient(W*.5,H*.5,Math.min(W,H)*.34,W*.5,H*.5,Math.max(W,H)*.78);
+  vg.addColorStop(0,'rgba(0,0,0,0)'); vg.addColorStop(1,'rgba(0,0,0,.45)');
+  ctx.fillStyle=vg; ctx.fillRect(0,0,W,H);
+  if(game.hitFlash>0){ ctx.fillStyle='rgba(255,60,40,'+(game.hitFlash*.32)+')'; ctx.fillRect(0,0,W,H); }
+  if(game.chase>.3){ ctx.fillStyle='rgba(180,30,20,'+((game.chase-.3)*.2)+')'; ctx.fillRect(0,0,W,H); }
+
+  /* catch cutscene overlay text */
+  if(state===S.CATCH){
+    const t=game.catchT, a=clamp(t/0.4,0,1)*clamp((4.3-t)/0.5,0,1);
+    ctx.globalAlpha=a; ctx.textAlign='center';
+    ctx.fillStyle='rgba(0,0,0,.45)'; ctx.fillRect(0,H*.12,W,H*.14);
+    ctx.fillStyle='#fff'; ctx.font='900 '+Math.round(H*.042)+'px Trebuchet MS, sans-serif';
+    ctx.fillText(t<2.0?'30 SECONDS — HE CAUGHT HER!':'SHE RAN INSIDE… HE FOLLOWED', W*.5, H*.185);
+    ctx.font='700 '+Math.round(H*.019)+'px Trebuchet MS, sans-serif';
+    ctx.fillStyle='rgba(255,214,170,.95)';
+    ctx.fillText(t<2.0?"JANANI'S HOUSE · THANAKKANKULAM 625006":'NOW SAY IT PROPERLY, BIREETHIVE…', W*.5, H*.185+Math.round(H*.032));
+    ctx.globalAlpha=1;
+    const fade=clamp((t-3.5)/0.8,0,1);
+    if(fade>0){ ctx.fillStyle='rgba(0,0,0,'+fade+')'; ctx.fillRect(0,0,W,H); }
+  }
+  ctx.restore();
+
+  const b=document.getElementById('bubble');
+  if(janScreen&&state===S.PLAY){
+    b.style.left=clamp(janScreen.x,110,W-110)+'px';
+    b.style.top=clamp(janScreen.y,70,H-170)+'px';
+  } else if(state!==S.PLAY){ b.classList.remove('on'); }
+}
+
+/* ====================== LOOP ====================== */
+let last=performance.now();
+function frame(now){
+  let dt=(now-last)/1000; last=now;
+  if(dt>.05) dt=.05;
+  update(dt); render();
+  requestAnimationFrame(frame);
+}
+try{ game.best=parseInt(localStorage.getItem('janani_best')||'0',10)||0; }catch(e){ game.best=0; }
+resize(); computeTheme(); resetGame();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
